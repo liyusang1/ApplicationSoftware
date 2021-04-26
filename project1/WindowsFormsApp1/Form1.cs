@@ -12,6 +12,24 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
+        class User
+        {
+            private string ID;
+            private string PW;
+            private string Name;
+            private int Number;
+            private string Tokens;
+        }
+
+        class Student : User
+        {
+
+        }
+
+        class Professor : User { }
+
+        class Subject { }
+
         public Form1()
         {
             InitializeComponent();
