@@ -18,7 +18,7 @@ using System.Collections;
 
 namespace WindowsFormsApp1
 {
-    public partial class Form1 : Form
+    public partial class loginForm : Form
     {
         enum Day // 요일
         {
@@ -212,9 +212,59 @@ namespace WindowsFormsApp1
             }
         }
 
-        public Form1()
+        public loginForm()
         {
             InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private Point mousePoint; // 폼을 움직이기 위해 마우스 좌표를 저장할 변수
+
+        private void Form1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                int x = mousePoint.X - e.X;
+                int y = mousePoint.Y - e.Y;
+                Location = new Point(this.Left - x, this.Top - y);
+            }
+        }
+
+        private void Form1_MouseDown(object sender, MouseEventArgs e)
+        {
+            mousePoint = new Point(e.X, e.Y);
+        }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            string id = txtID.Text;
+            string password = txtPassword.Text;
+
+            /*
+              if()문으로 유저의 아이디와 비밀번호를 비교함. 추가 예정
+            */
+
+            this.Hide(); // 로그인 창 숨김
+
+            TimeTableForm TimeTable = new TimeTableForm(); // 로그인 시 첫 화면은 시간표 폼을 열음
+            TimeTable.Show();
+        }
+
+        private void btnSignUp_Click(object sender, EventArgs e)
+        {
+            this.Hide(); // 로그인 창 숨김
+
+            SignUpForm signup = new SignUpForm(); // 회원가입 폼 열음
+            signup.Show();
         }
     }
 }
