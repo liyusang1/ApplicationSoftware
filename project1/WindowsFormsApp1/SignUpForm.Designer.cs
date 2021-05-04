@@ -36,11 +36,13 @@ namespace WindowsFormsApp1
             this.label6 = new System.Windows.Forms.Label();
             this.lblPasswod = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
-            this.txtID = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
-            this.txtNum = new System.Windows.Forms.TextBox();
+            this.txtPasswordCheck = new System.Windows.Forms.TextBox();
+            this.txtId = new System.Windows.Forms.TextBox();
             this.lblSignUp = new System.Windows.Forms.Label();
             this.btnDone = new System.Windows.Forms.Button();
+            this.txtMajor = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picMain)).BeginInit();
             this.SuspendLayout();
             // 
@@ -98,9 +100,9 @@ namespace WindowsFormsApp1
             this.label6.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label6.Location = new System.Drawing.Point(231, 291);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(23, 16);
+            this.label6.Size = new System.Drawing.Size(67, 16);
             this.label6.TabIndex = 13;
-            this.label6.Text = "ID";
+            this.label6.Text = "Password";
             // 
             // lblPasswod
             // 
@@ -109,9 +111,9 @@ namespace WindowsFormsApp1
             this.lblPasswod.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lblPasswod.Location = new System.Drawing.Point(231, 344);
             this.lblPasswod.Name = "lblPasswod";
-            this.lblPasswod.Size = new System.Drawing.Size(67, 16);
+            this.lblPasswod.Size = new System.Drawing.Size(104, 16);
             this.lblPasswod.TabIndex = 14;
-            this.lblPasswod.Text = "Password";
+            this.lblPasswod.Text = "PasswordCheck";
             // 
             // txtName
             // 
@@ -122,32 +124,32 @@ namespace WindowsFormsApp1
             this.txtName.Size = new System.Drawing.Size(140, 14);
             this.txtName.TabIndex = 15;
             // 
-            // txtID
-            // 
-            this.txtID.BackColor = System.Drawing.SystemColors.Window;
-            this.txtID.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtID.Location = new System.Drawing.Point(234, 310);
-            this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(140, 14);
-            this.txtID.TabIndex = 16;
-            // 
             // txtPassword
             // 
             this.txtPassword.BackColor = System.Drawing.SystemColors.Window;
             this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtPassword.Location = new System.Drawing.Point(234, 363);
+            this.txtPassword.Location = new System.Drawing.Point(234, 310);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(140, 14);
-            this.txtPassword.TabIndex = 17;
+            this.txtPassword.TabIndex = 16;
             // 
-            // txtNum
+            // txtPasswordCheck
             // 
-            this.txtNum.BackColor = System.Drawing.SystemColors.Window;
-            this.txtNum.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtNum.Location = new System.Drawing.Point(20, 363);
-            this.txtNum.Name = "txtNum";
-            this.txtNum.Size = new System.Drawing.Size(140, 14);
-            this.txtNum.TabIndex = 18;
+            this.txtPasswordCheck.BackColor = System.Drawing.SystemColors.Window;
+            this.txtPasswordCheck.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtPasswordCheck.Location = new System.Drawing.Point(234, 363);
+            this.txtPasswordCheck.Name = "txtPasswordCheck";
+            this.txtPasswordCheck.Size = new System.Drawing.Size(140, 14);
+            this.txtPasswordCheck.TabIndex = 17;
+            // 
+            // txtId
+            // 
+            this.txtId.BackColor = System.Drawing.SystemColors.Window;
+            this.txtId.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtId.Location = new System.Drawing.Point(20, 363);
+            this.txtId.Name = "txtId";
+            this.txtId.Size = new System.Drawing.Size(140, 14);
+            this.txtId.TabIndex = 18;
             // 
             // lblSignUp
             // 
@@ -175,16 +177,38 @@ namespace WindowsFormsApp1
             this.btnDone.UseVisualStyleBackColor = false;
             this.btnDone.Click += new System.EventHandler(this.btnDone_Click);
             // 
+            // txtMajor
+            // 
+            this.txtMajor.BackColor = System.Drawing.SystemColors.Window;
+            this.txtMajor.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtMajor.Location = new System.Drawing.Point(20, 415);
+            this.txtMajor.Name = "txtMajor";
+            this.txtMajor.Size = new System.Drawing.Size(140, 14);
+            this.txtMajor.TabIndex = 21;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Georgia", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label1.Location = new System.Drawing.Point(17, 396);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(30, 16);
+            this.label1.TabIndex = 22;
+            this.label1.Text = "학과";
+            // 
             // SignUpForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(400, 500);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtMajor);
             this.Controls.Add(this.btnDone);
             this.Controls.Add(this.lblSignUp);
-            this.Controls.Add(this.txtNum);
+            this.Controls.Add(this.txtId);
+            this.Controls.Add(this.txtPasswordCheck);
             this.Controls.Add(this.txtPassword);
-            this.Controls.Add(this.txtID);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.lblPasswod);
             this.Controls.Add(this.label6);
@@ -212,10 +236,12 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label lblPasswod;
         private System.Windows.Forms.TextBox txtName;
-        private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.TextBox txtPassword;
-        private System.Windows.Forms.TextBox txtNum;
+        private System.Windows.Forms.TextBox txtPasswordCheck;
+        private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.Label lblSignUp;
         private System.Windows.Forms.Button btnDone;
+        private System.Windows.Forms.TextBox txtMajor;
+        private System.Windows.Forms.Label label1;
     }
 }

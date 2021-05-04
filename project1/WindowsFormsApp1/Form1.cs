@@ -15,6 +15,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Collections;
+using RestSharp; //RestSharp 라이브러리를 사용 예정
+using Newtonsoft.Json;  //Newtonsoft 라이브러리 사용예정
+using Newtonsoft.Json.Linq;
 
 namespace WindowsFormsApp1
 {
@@ -249,14 +252,50 @@ namespace WindowsFormsApp1
             string id = txtID.Text;
             string password = txtPassword.Text;
 
+            var client = new RestClient("https://team.liyusang1.site/sign-in");
+            client.Timeout = -1;
+            var request = new RestRequest(Method.POST);
+            request.AddHeader("Content-Type", "application/json");
+
+            //서버로 값을 보낼때 이런식으로 보내게 됩니다. 
+            request.AddJsonBody(
+                       new
+                       {
+                           id = id,
+                           password = password,
+                       });
+
+            IRestResponse response = client.Execute(request);
+
+            //받아온 데이터를 json형태로 묶음
+            var jObject = JObject.Parse(response.Content);
+
+            //code 를 resultCode에 저장
+            int resultCode = (int)jObject["code"];
+
+            //로그인 성공시
+            if (resultCode == 200)
+            {
+                string jwtToken = jObject["jwt"].ToString();
+              
+                //jwtToken을 저장해야함
+
+                this.Hide(); // 로그인 창 숨김
+
+                TimeTableForm TimeTable = new TimeTableForm(); // 로그인 시 첫 화면은 시간표 폼을 열음
+                TimeTable.Show();
+            }
+            
+            //로그인 실패시 에러메시지 출력되도록
+            else
+            {
+
+            }
+
             /*
               if()문으로 유저의 아이디와 비밀번호를 비교함. 추가 예정
             */
 
-            this.Hide(); // 로그인 창 숨김
-
-            TimeTableForm TimeTable = new TimeTableForm(); // 로그인 시 첫 화면은 시간표 폼을 열음
-            TimeTable.Show();
         }
 
         private void btnSignUp_Click(object sender, EventArgs e)
