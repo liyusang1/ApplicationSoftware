@@ -43,7 +43,15 @@ namespace WindowsFormsApp1
             this.btnDone = new System.Windows.Forms.Button();
             this.txtMajor = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.panelError = new System.Windows.Forms.Panel();
+            this.btnError = new System.Windows.Forms.Button();
+            this.lblError = new System.Windows.Forms.Label();
+            this.panelAlready = new System.Windows.Forms.Panel();
+            this.btnAlready = new System.Windows.Forms.Button();
+            this.lblAlready = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picMain)).BeginInit();
+            this.panelError.SuspendLayout();
+            this.panelAlready.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnExit
@@ -197,11 +205,82 @@ namespace WindowsFormsApp1
             this.label1.TabIndex = 22;
             this.label1.Text = "학과";
             // 
+            // panelError
+            // 
+            this.panelError.Controls.Add(this.btnError);
+            this.panelError.Controls.Add(this.lblError);
+            this.panelError.Location = new System.Drawing.Point(103, 126);
+            this.panelError.Name = "panelError";
+            this.panelError.Size = new System.Drawing.Size(200, 81);
+            this.panelError.TabIndex = 25;
+            // 
+            // btnError
+            // 
+            this.btnError.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnError.FlatAppearance.BorderSize = 0;
+            this.btnError.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnError.Font = new System.Drawing.Font("UD Digi Kyokasho NK-B", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.btnError.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnError.Location = new System.Drawing.Point(44, 42);
+            this.btnError.Name = "btnError";
+            this.btnError.Size = new System.Drawing.Size(107, 36);
+            this.btnError.TabIndex = 1;
+            this.btnError.Text = "확인";
+            this.btnError.UseVisualStyleBackColor = false;
+            this.btnError.Click += new System.EventHandler(this.btnError_Click);
+            // 
+            // lblError
+            // 
+            this.lblError.AutoSize = true;
+            this.lblError.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblError.Font = new System.Drawing.Font("UD Digi Kyokasho NK-B", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lblError.Location = new System.Drawing.Point(23, 10);
+            this.lblError.Name = "lblError";
+            this.lblError.Size = new System.Drawing.Size(158, 22);
+            this.lblError.TabIndex = 0;
+            this.lblError.Text = "정확히 입력해주세요.";
+            // 
+            // panelAlready
+            // 
+            this.panelAlready.Controls.Add(this.btnAlready);
+            this.panelAlready.Controls.Add(this.lblAlready);
+            this.panelAlready.Location = new System.Drawing.Point(103, 149);
+            this.panelAlready.Name = "panelAlready";
+            this.panelAlready.Size = new System.Drawing.Size(196, 104);
+            this.panelAlready.TabIndex = 26;
+            // 
+            // btnAlready
+            // 
+            this.btnAlready.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnAlready.FlatAppearance.BorderSize = 0;
+            this.btnAlready.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAlready.Font = new System.Drawing.Font("UD Digi Kyokasho NK-B", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.btnAlready.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnAlready.Location = new System.Drawing.Point(47, 64);
+            this.btnAlready.Name = "btnAlready";
+            this.btnAlready.Size = new System.Drawing.Size(89, 33);
+            this.btnAlready.TabIndex = 1;
+            this.btnAlready.Text = "확인";
+            this.btnAlready.UseVisualStyleBackColor = false;
+            this.btnAlready.Click += new System.EventHandler(this.btnAlready_Click);
+            // 
+            // lblAlready
+            // 
+            this.lblAlready.AutoSize = true;
+            this.lblAlready.Font = new System.Drawing.Font("UD Digi Kyokasho NK-B", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lblAlready.Location = new System.Drawing.Point(14, 18);
+            this.lblAlready.Name = "lblAlready";
+            this.lblAlready.Size = new System.Drawing.Size(173, 22);
+            this.lblAlready.TabIndex = 0;
+            this.lblAlready.Text = "이미 가입되어있습니다.";
+            // 
             // SignUpForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(400, 500);
+            this.Controls.Add(this.panelAlready);
+            this.Controls.Add(this.panelError);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtMajor);
             this.Controls.Add(this.btnDone);
@@ -222,6 +301,10 @@ namespace WindowsFormsApp1
             this.Text = "SignUpForm";
             this.Load += new System.EventHandler(this.SignUpForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picMain)).EndInit();
+            this.panelError.ResumeLayout(false);
+            this.panelError.PerformLayout();
+            this.panelAlready.ResumeLayout(false);
+            this.panelAlready.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -243,5 +326,11 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Button btnDone;
         private System.Windows.Forms.TextBox txtMajor;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panelError;
+        private System.Windows.Forms.Button btnError;
+        private System.Windows.Forms.Label lblError;
+        private System.Windows.Forms.Panel panelAlready;
+        private System.Windows.Forms.Button btnAlready;
+        private System.Windows.Forms.Label lblAlready;
     }
 }

@@ -37,7 +37,11 @@ namespace WindowsFormsApp1
             this.txtID = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.picMain = new System.Windows.Forms.PictureBox();
+            this.panelError = new System.Windows.Forms.Panel();
+            this.btnError = new System.Windows.Forms.Button();
+            this.lblError = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picMain)).BeginInit();
+            this.panelError.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblID
@@ -133,11 +137,48 @@ namespace WindowsFormsApp1
             this.picMain.TabIndex = 5;
             this.picMain.TabStop = false;
             // 
+            // panelError
+            // 
+            this.panelError.Controls.Add(this.btnError);
+            this.panelError.Controls.Add(this.lblError);
+            this.panelError.Location = new System.Drawing.Point(116, 202);
+            this.panelError.Name = "panelError";
+            this.panelError.Size = new System.Drawing.Size(168, 97);
+            this.panelError.TabIndex = 12;
+            // 
+            // btnError
+            // 
+            this.btnError.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnError.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnError.FlatAppearance.BorderSize = 0;
+            this.btnError.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnError.Font = new System.Drawing.Font("UD Digi Kyokasho NK-B", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.btnError.Location = new System.Drawing.Point(50, 55);
+            this.btnError.Name = "btnError";
+            this.btnError.Size = new System.Drawing.Size(63, 27);
+            this.btnError.TabIndex = 1;
+            this.btnError.Text = "확인";
+            this.btnError.UseVisualStyleBackColor = false;
+            this.btnError.Click += new System.EventHandler(this.btnError_Click);
+            // 
+            // lblError
+            // 
+            this.lblError.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblError.AutoSize = true;
+            this.lblError.Font = new System.Drawing.Font("UD Digi Kyokasho NK-B", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lblError.Location = new System.Drawing.Point(30, 10);
+            this.lblError.Name = "lblError";
+            this.lblError.Size = new System.Drawing.Size(115, 18);
+            this.lblError.TabIndex = 0;
+            this.lblError.Text = "잘못된 정보입니다.";
+            // 
             // loginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(400, 500);
+            this.Controls.Add(this.panelError);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtID);
             this.Controls.Add(this.btnExit);
@@ -154,6 +195,8 @@ namespace WindowsFormsApp1
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
             ((System.ComponentModel.ISupportInitialize)(this.picMain)).EndInit();
+            this.panelError.ResumeLayout(false);
+            this.panelError.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -168,6 +211,9 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.TextBox txtPassword;
+        private System.Windows.Forms.Panel panelError;
+        private System.Windows.Forms.Button btnError;
+        private System.Windows.Forms.Label lblError;
     }
 }
 

@@ -173,7 +173,7 @@ namespace WindowsFormsApp1
             this.dgvTime.RowTemplate.Height = 23;
             this.dgvTime.RowTemplate.ReadOnly = true;
             this.dgvTime.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvTime.Size = new System.Drawing.Size(976, 176);
+            this.dgvTime.Size = new System.Drawing.Size(976, 214);
             this.dgvTime.TabIndex = 11;
             // 
             // panel2
@@ -203,7 +203,6 @@ namespace WindowsFormsApp1
             this.label6.Size = new System.Drawing.Size(138, 16);
             this.label6.TabIndex = 0;
             this.label6.Text = "5교시(15:00 ~ 16:30)";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label3
             // 
@@ -215,7 +214,6 @@ namespace WindowsFormsApp1
             this.label3.Size = new System.Drawing.Size(138, 16);
             this.label3.TabIndex = 0;
             this.label3.Text = "2교시(10:30 ~ 12:00)";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label8
             // 
@@ -235,7 +233,6 @@ namespace WindowsFormsApp1
             this.label7.Size = new System.Drawing.Size(138, 16);
             this.label7.TabIndex = 0;
             this.label7.Text = "6교시(16:30 ~ 18:00)";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // label5
             // 
@@ -247,7 +244,6 @@ namespace WindowsFormsApp1
             this.label5.Size = new System.Drawing.Size(138, 16);
             this.label5.TabIndex = 0;
             this.label5.Text = "4교시(13:30 ~ 15:00)";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label4
             // 
@@ -259,7 +255,6 @@ namespace WindowsFormsApp1
             this.label4.Size = new System.Drawing.Size(138, 16);
             this.label4.TabIndex = 0;
             this.label4.Text = "3교시(12:00 ~ 13:30)";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label2
             // 
@@ -272,7 +267,6 @@ namespace WindowsFormsApp1
             this.label2.Size = new System.Drawing.Size(130, 16);
             this.label2.TabIndex = 0;
             this.label2.Text = "1교시(9:00 ~ 10:30)";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label1
             // 
@@ -283,7 +277,6 @@ namespace WindowsFormsApp1
             this.label1.Size = new System.Drawing.Size(122, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "0교시(8:00 ~ 8:50)";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // TimeTableForm
             // 

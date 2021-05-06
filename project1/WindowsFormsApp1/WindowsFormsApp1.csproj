@@ -65,6 +65,7 @@
     <Compile Include="Form2.Designer.cs">
       <DependentUpon>Form2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Info.cs" />
     <Compile Include="LectureViewForm.cs">
       <SubType>Form</SubType>
     </Compile>

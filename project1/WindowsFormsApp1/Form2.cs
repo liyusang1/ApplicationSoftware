@@ -12,13 +12,25 @@ namespace WindowsFormsApp1
 {
     public partial class TimeTableForm : Form
     {
-        public TimeTableForm()
+        loginForm login = new loginForm();
+        string usr_id;
+        string usr_name;
+        public TimeTableForm(string id, string name)
         {
             InitializeComponent();
+            this.usr_id = id;
+            if (name == "")
+            {
+                txtUser.Text = id + " 홍길동"; // 임의로 지정
+                this.usr_name = "홍길동";
+            }
+            else
+            {
+                txtUser.Text = id + " " + name;
+                this.usr_name = name;
+            }
 
-            txtUser.Text = "2021000000 홍길동"; // 임의로 지정
             DataTable time = new DataTable();
-
             //열 추가
             time.Columns.Add(" ", typeof(string));
             time.Columns.Add("월", typeof(string));
@@ -35,6 +47,7 @@ namespace WindowsFormsApp1
             time.Rows.Add("4", "", "", "", "", "컴퓨터구조");
             time.Rows.Add("5", "선형대수학", "", "", "", "");
             time.Rows.Add("6", "", "", "공학수학", "", "");
+            time.Rows.Add("99", "", "", "", "", "");
 
             dgvTime.DataSource = time;
 
@@ -45,7 +58,6 @@ namespace WindowsFormsApp1
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            loginForm login = new loginForm();
             this.Close();
             login.Show();
         }
@@ -82,45 +94,10 @@ namespace WindowsFormsApp1
             }
             else if(cmbMenu.SelectedIndex == 2){
                 //온라인강의보기 폼을 이동
-                LectureViewForm lectureView = new LectureViewForm();
+                LectureViewForm lectureView = new LectureViewForm(this.usr_id, this.usr_name);
                 this.Hide();
                 lectureView.Show();
             }
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

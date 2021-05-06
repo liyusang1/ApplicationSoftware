@@ -45,3 +45,9 @@ C:\Users\no020\OneDrive\바탕 화면\응소실\ApplicationSoftware\project1\Win
 C:\Users\no020\OneDrive\바탕 화면\응소실\ApplicationSoftware\project1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 C:\Users\no020\OneDrive\바탕 화면\응소실\ApplicationSoftware\project1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
 C:\Users\no020\OneDrive\바탕 화면\응소실\ApplicationSoftware\project1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.LectureViewForm.resources
+C:\Users\YoungSeo\Desktop\HomeWork\klasProject\ApplicationSoftware\project1\WindowsFormsApp1\bin\Debug\Newtonsoft.Json.dll
+C:\Users\YoungSeo\Desktop\HomeWork\klasProject\ApplicationSoftware\project1\WindowsFormsApp1\bin\Debug\RestSharp.dll
+C:\Users\YoungSeo\Desktop\HomeWork\klasProject\ApplicationSoftware\project1\WindowsFormsApp1\bin\Debug\Newtonsoft.Json.xml
+C:\Users\YoungSeo\Desktop\HomeWork\klasProject\ApplicationSoftware\project1\WindowsFormsApp1\bin\Debug\RestSharp.xml
+C:\Users\YoungSeo\Desktop\HomeWork\klasProject\ApplicationSoftware\project1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.LectureViewForm.resources
+C:\Users\YoungSeo\Desktop\HomeWork\klasProject\ApplicationSoftware\project1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CopyComplete

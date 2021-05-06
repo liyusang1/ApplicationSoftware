@@ -22,11 +22,11 @@ namespace WindowsFormsApp1
 
         private void SignUpForm_Load(object sender, EventArgs e)
         {
-
+            panelAlready.Hide();
+            panelError.Hide();
         }
 
         loginForm login = new loginForm();
-        TimeTableForm timetable = new TimeTableForm();
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -67,26 +67,31 @@ namespace WindowsFormsApp1
             //회원가입 성공시
             if (resultCode == 200)
             {
+                TimeTableForm timetable = new TimeTableForm(id, name);
                 this.Close();
                 timetable.Show();
             }
             //이미 같은 학번으로 가입이 되어 있는 경우
             else if (resultCode == 302)
             {
-                //이미 가입되어있습니다 라는 메시지가 출력되도록해주세요
+                panelAlready.Show();
             }
             //그외의 경우
             else
             {
-                //모든 값을 입력해주세요와 같은 메시지가 출력되도록
+                panelError.Show();
             }
 
+        }
 
+        private void btnError_Click(object sender, EventArgs e)
+        {
+            panelError.Hide();
+        }
 
-
-            /*
-             if()문 비교 후 이름과 학번이 일치한다고 가정하여 가입완료
-            */
+        private void btnAlready_Click(object sender, EventArgs e)
+        {
+            panelAlready.Hide();
         }
     }
 }

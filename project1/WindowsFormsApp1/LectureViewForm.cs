@@ -12,10 +12,14 @@ namespace WindowsFormsApp1
 {
     public partial class LectureViewForm : Form
     {
-        public LectureViewForm()
+        string usr_id;
+        string usr_name;
+        public LectureViewForm(string id, string name)
         {
             InitializeComponent();
 
+            this.usr_name = name;
+            this.usr_id = id;
             string[] menu = { "시간표", "강의자료실", "온라인강의보기" };
             cmbMenu.Items.AddRange(menu);
             cmbMenu.SelectedIndex = 2;
@@ -59,7 +63,7 @@ namespace WindowsFormsApp1
             if (cmbMenu.SelectedIndex == 0)
             {
                 //시간표 폼으로 이동
-                TimeTableForm timeTable = new TimeTableForm();
+                TimeTableForm timeTable = new TimeTableForm(this.usr_id, this.usr_name);
                 this.Hide();
                 timeTable.Show();
             }
@@ -67,6 +71,11 @@ namespace WindowsFormsApp1
             {
                 //강의자료실 폼을 이동
             }
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
