@@ -91,7 +91,14 @@ namespace WindowsFormsApp1
 
                 this.Hide(); // 로그인 창 숨김
 
-                TimeTableForm TimeTable = new TimeTableForm(id, ""); // 로그인 시 첫 화면은 시간표 폼을 열음
+                //학생이라 가정
+                List<Student> usr_friend = new List<Student>(new Student[10]);
+                List<Subject> usr_subject = new List<Subject>(new Subject[7]);
+                List<(Subject, Score)> usr_score = new List<(Subject, Score)>(new (Subject, Score)[7]);
+                
+                Student stu = new Student(id, password, "", Convert.ToInt32(id), jwtToken, "", usr_friend, usr_subject, usr_score);//임의로 지정
+                
+                TimeTableForm TimeTable = new TimeTableForm(stu); // 로그인 시 첫 화면은 시간표 폼을 열음
                 TimeTable.Show();
             }
             

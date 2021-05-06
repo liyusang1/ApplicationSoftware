@@ -13,22 +13,20 @@ namespace WindowsFormsApp1
     public partial class TimeTableForm : Form
     {
         loginForm login = new loginForm();
-        string usr_id;
-        string usr_name;
-        public TimeTableForm(string id, string name)
+        Student std;
+        public TimeTableForm(Student st)
         {
             InitializeComponent();
-            this.usr_id = id;
-            if (name == "")
+            if (st.Name == "")
             {
-                txtUser.Text = id + " 홍길동"; // 임의로 지정
-                this.usr_name = "홍길동";
+                txtUser.Text = st.Id + " 홍길동"; // 임의로 지정
             }
             else
             {
-                txtUser.Text = id + " " + name;
-                this.usr_name = name;
+                txtUser.Text = st.Id + " " + st.Name;
             }
+
+            std = new Student(st.Id, st.Pw, st.Name, st.Number, st.Tokens, st.Department, st.Friends, st.Subjects, st.Scores);
 
             DataTable time = new DataTable();
             //열 추가
@@ -94,7 +92,7 @@ namespace WindowsFormsApp1
             }
             else if(cmbMenu.SelectedIndex == 2){
                 //온라인강의보기 폼을 이동
-                LectureViewForm lectureView = new LectureViewForm(this.usr_id, this.usr_name);
+                LectureViewForm lectureView = new LectureViewForm(std);
                 this.Hide();
                 lectureView.Show();
             }

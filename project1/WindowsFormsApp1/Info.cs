@@ -6,17 +6,18 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1
 {
-    enum Day // 요일
+    /* 일관성 없는 액세스 가능성 오류를 피하기 위해 public으로 바꿀 수 있는 것은 바꿈*/
+    public enum Day // 요일
     {
         MON, TUE, WED, THU, FRI
     }
 
-    enum Score // 성적의 종류
+    public enum Score // 성적의 종류
     {
         APLUS, AZERO, BPLUS, BZERO, CPLUS, CZERO, F
     }
 
-    class User
+    public class User
     {
         private string id; // 아이디
         private string pw; // 비밀번호
@@ -62,11 +63,11 @@ namespace WindowsFormsApp1
         }
     }
 
-    class Student : User
+    public class Student : User
     {
         private List<Student> friends; // 친구목록
         private List<Subject> subjects; // 듣고 있는 과목 목록
-        private List<(Subject, Score)> scores; // 나의 성적들 (과목명,점수) - 이때 점수는 enum Score 중 하나
+        public List<(Subject, Score)> scores; // 나의 성적들 (과목명,점수) - 이때 점수는 enum Score 중 하나
 
         public Student(string id, string pw, string name, int number, string tokens, string department,
             List<Student> friends, List<Subject> subjects, List<(Subject, Score)> scores)
@@ -74,7 +75,8 @@ namespace WindowsFormsApp1
             Id = id;
             Pw = pw;
             Name = name;
-            Number = number;
+            Number = number; //id가 학번이라서 지워도 될 것 같음
+
             Tokens = tokens;
             Department = department;
             Friends = friends;
@@ -126,13 +128,13 @@ namespace WindowsFormsApp1
         }
     }
 
-    class Subject
+    public class Subject
     {
         //이 과목이 열린 학기도 필요한지 모르겠음 - 성적 입력할 때 필요할 수도
         private string name; // 과목이름
         private int number; // 과목번호
         private short credits; // 학점
-        private List<(Day, short)> times; // (요일,교시) ex) 화1목2 면 (화,1) , (목,2) 
+        public List<(Day, short)> times; // (요일,교시) ex) 화1목2 면 (화,1) , (목,2) 
         private string professor_name; // 교수 이름
         private string classroom; // 교실 이름
         private List<Student> students; // 수강하는 학생 목록

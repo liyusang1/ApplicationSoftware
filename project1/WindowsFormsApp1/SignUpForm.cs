@@ -66,8 +66,13 @@ namespace WindowsFormsApp1
 
             //회원가입 성공시
             if (resultCode == 200)
-            {
-                TimeTableForm timetable = new TimeTableForm(id, name);
+            { 
+                List<Student> usr_friend = new List<Student>(new Student[10]);
+                List<Subject> usr_subject = new List<Subject>(new Subject[7]);
+                List<(Subject, Score)> usr_score = new List<(Subject, Score)>(new (Subject, Score)[7]);
+
+                Student stu = new Student(id, password, name, Convert.ToInt32(id), "", major, usr_friend, usr_subject, usr_score);
+                TimeTableForm timetable = new TimeTableForm(stu);
                 this.Close();
                 timetable.Show();
             }
