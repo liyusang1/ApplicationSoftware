@@ -82,6 +82,9 @@ namespace WindowsFormsApp1
             }
             else if(cmbMenu.SelectedIndex == 2){
                 //온라인강의보기 폼을 이동
+                LectureViewForm lectureView = new LectureViewForm();
+                this.Hide();
+                lectureView.Show();
             }
         }
 
