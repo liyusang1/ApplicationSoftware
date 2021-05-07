@@ -67,7 +67,13 @@ namespace WindowsFormsApp1
     {
         private List<Student> friends; // 친구목록
         private List<Subject> subjects; // 듣고 있는 과목 목록
-        public List<(Subject, Score)> scores; // 나의 성적들 (과목명,점수) - 이때 점수는 enum Score 중 하나
+        private List<(Subject, Score)> scores; // 나의 성적들 (과목명,점수) - 이때 점수는 enum Score 중 하나
+        private List<Article> visibleArticles; // 학생이 볼 수 있는 모든 글
+
+        public Student(string tokens)
+        {
+            Tokens = tokens;
+        }
 
         public Student(string id, string pw, string name, int number, string tokens, string department,
             List<Student> friends, List<Subject> subjects, List<(Subject, Score)> scores)
@@ -101,13 +107,24 @@ namespace WindowsFormsApp1
             get { return scores; }
             set { scores = value; }
         }
-
+        
+        public List<Article> VisibleArticles
+        {
+            get { return visibleArticles; }
+            set { visibleArticles = value; }
+        }
+        
     }
 
     class Professor : User
     {
         private List<Subject> subjects; // 가르치는 과목 목록
                                         // 과목별 학생목록은 subject에 students에 있음
+
+        public Professor(string tokens)
+        {
+            Tokens = tokens;
+        }
 
         public Professor(string id, string pw, string name, int number, string tokens, string department,
              List<Subject> subjects)
@@ -199,6 +216,59 @@ namespace WindowsFormsApp1
         {
             get { return department; }
             set { department = value; }
+        }
+    }
+
+    public class Article
+    {
+        private int articleID; //모든 글들을 구별할 수 있게하는 ID
+        private string subjectname; //과목명
+        private string title; //제목
+        private string author; //작성자
+        private string date; //날짜
+        private int views; //조회수
+        private List<string> content; //글내용
+
+        public int ArticleID
+        {
+            get { return articleID; }
+            set { articleID = value; }
+        }
+
+        public string SubjectName
+        {
+            get { return subjectname; }
+            set { subjectname = value; }
+        }
+
+        public string Title
+        {
+            get { return title; }
+            set { title = value; }
+        }
+
+        public string Author
+        {
+            get { return author; }
+            set { author = value; }
+        }
+
+        public string Date
+        {
+            get { return date; }
+            set { date = value; }
+        }
+
+        public int Views
+        {
+            get { return views; }
+            set { views = value; }
+        }
+
+        public List<string> Content
+        {
+            get { return content; }
+            set { content = value; }
         }
     }
 }
