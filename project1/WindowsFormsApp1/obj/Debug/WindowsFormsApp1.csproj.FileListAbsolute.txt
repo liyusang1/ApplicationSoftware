@@ -51,3 +51,6 @@ C:\Users\YoungSeo\Desktop\HomeWork\klasProject\ApplicationSoftware\project1\Wind
 C:\Users\YoungSeo\Desktop\HomeWork\klasProject\ApplicationSoftware\project1\WindowsFormsApp1\bin\Debug\RestSharp.xml
 C:\Users\YoungSeo\Desktop\HomeWork\klasProject\ApplicationSoftware\project1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.LectureViewForm.resources
 C:\Users\YoungSeo\Desktop\HomeWork\klasProject\ApplicationSoftware\project1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CopyComplete
+C:\Users\user\Desktop\ApplicationSoftware\project1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.ArticleViewDisplay.resources
+C:\Users\user\Desktop\ApplicationSoftware\project1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.ArticleViewMain.resources
+C:\Users\user\Desktop\ApplicationSoftware\project1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.LectureViewForm.resources

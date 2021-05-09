@@ -19,6 +19,10 @@ using RestSharp; //RestSharp 라이브러리를 사용 예정
 using Newtonsoft.Json;  //Newtonsoft 라이브러리 사용예정
 using Newtonsoft.Json.Linq;
 
+//testId 
+//id : 2020
+//password :test123
+
 namespace WindowsFormsApp1
 {
     public partial class loginForm : Form
@@ -86,7 +90,10 @@ namespace WindowsFormsApp1
             if (resultCode == 200)
             {
                 string jwtToken = jObject["jwt"].ToString();
-              
+                string name = jObject["name"].ToString(); //학생의 이름을 받아옴
+                string department = jObject["department"].ToString(); //학생의 학과를 받아옴
+                int identification = (int)jObject["identification"]; //identification이 0이라면 학생, 1이라면 교수임 조건문을 활용하여 폼이 다르게 뜨도록 설계해야합니다.
+
                 //jwtToken을 저장해야함
 
                 this.Hide(); // 로그인 창 숨김
@@ -96,7 +103,7 @@ namespace WindowsFormsApp1
                 List<Subject> usr_subject = new List<Subject>(new Subject[7]);
                 List<(Subject, Score)> usr_score = new List<(Subject, Score)>(new (Subject, Score)[7]);
                 
-                Student stu = new Student(id, password, "", Convert.ToInt32(id), jwtToken, "", usr_friend, usr_subject, usr_score);//임의로 지정
+                Student stu = new Student(id, password, name, Convert.ToInt32(id), jwtToken, department, usr_friend, usr_subject, usr_score);
                 
                 TimeTableForm TimeTable = new TimeTableForm(stu); // 로그인 시 첫 화면은 시간표 폼을 열음
                 TimeTable.Show();
