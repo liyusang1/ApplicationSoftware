@@ -25,7 +25,9 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
             
-                txtUser.Text = st.Id + " " + st.Name;
+            txtUser.Text = st.Id + " " + st.Name;
+
+            department.Text =  st.Department; //학과표시
             
             std = new Student(st.Id, st.Pw, st.Name, st.Number, st.Tokens, st.Department, st.Friends, st.Subjects, st.Scores);
 

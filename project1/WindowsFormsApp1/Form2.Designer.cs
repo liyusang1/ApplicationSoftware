@@ -48,6 +48,7 @@ namespace WindowsFormsApp1
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.department = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTime)).BeginInit();
             this.panel2.SuspendLayout();
@@ -71,6 +72,7 @@ namespace WindowsFormsApp1
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.panel1.Controls.Add(this.department);
             this.panel1.Controls.Add(this.cmbMenu);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.txtUser);
@@ -278,6 +280,17 @@ namespace WindowsFormsApp1
             this.label1.TabIndex = 0;
             this.label1.Text = "0교시(8:00 ~ 8:50)";
             // 
+            // department
+            // 
+            this.department.AutoSize = true;
+            this.department.Font = new System.Drawing.Font("나눔바른고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.department.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.department.Location = new System.Drawing.Point(693, 43);
+            this.department.Name = "department";
+            this.department.Size = new System.Drawing.Size(95, 19);
+            this.department.TabIndex = 13;
+            this.department.Text = "department";
+            // 
             // TimeTableForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -321,5 +334,6 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label department;
     }
 }
