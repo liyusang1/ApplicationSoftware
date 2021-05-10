@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using RestSharp;
+using Newtonsoft.Json.Linq;
 
 namespace WindowsFormsApp1
 {
@@ -18,6 +20,7 @@ namespace WindowsFormsApp1
             InitializeComponent();
 
             std = new Student(st.Id, st.Pw, st.Name, st.Number, st.Tokens, st.Department, st.Friends, st.Subjects, st.Scores);
+            txtUser.Text = st.Id + " " + st.Name;
             string[] menu = { "시간표", "강의자료실", "온라인강의보기" };
             cmbMenu.Items.AddRange(menu);
             cmbMenu.SelectedIndex = 2;
@@ -39,6 +42,28 @@ namespace WindowsFormsApp1
             lvwLecture.Columns[4].Width = 120;
             lvwLecture.Columns[5].Width = 110;
             lvwLecture.Columns[6].Width = 110;
+
+            var client = new RestClient("https://team.liyusang1.site/schedule");
+            client.Timeout = -1;
+            var request = new RestRequest(Method.GET);
+            request.AddHeader("x-access-token", st.Tokens);
+            IRestResponse response = client.Execute(request);
+
+
+            var jObject = JObject.Parse(response.Content);
+            int resultCode = (int)jObject["code"];
+
+            if (resultCode == 200)
+            {
+                int scheduleCount = (int)jObject["count"]; //이 학생이 수강하고 있는 과목 수
+
+                for (int i = 0; i < scheduleCount; i++)
+                {
+                    string className = jObject["result"][i]["className"].ToString();
+                    cmbSubject.Items.Add(className);
+                }
+            }
+            cmbSubject.SelectedIndex = 0;
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -68,6 +93,9 @@ namespace WindowsFormsApp1
             else if (cmbMenu.SelectedIndex == 1)
             {
                 //강의자료실 폼을 이동
+                ArticleViewMain articleView = new ArticleViewMain();
+                this.Hide();
+                articleView.Show();
             }
         }
 

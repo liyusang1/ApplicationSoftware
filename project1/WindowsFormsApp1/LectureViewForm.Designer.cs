@@ -37,7 +37,7 @@ namespace WindowsFormsApp1
             this.btnExit = new System.Windows.Forms.Button();
             this.lblKwang = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbSubject = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lvwLecture = new System.Windows.Forms.ListView();
             this.label2 = new System.Windows.Forms.Label();
@@ -141,7 +141,7 @@ namespace WindowsFormsApp1
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.Control;
-            this.panel2.Controls.Add(this.comboBox1);
+            this.panel2.Controls.Add(this.cmbSubject);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Location = new System.Drawing.Point(12, 93);
             this.panel2.Name = "panel2";
@@ -149,19 +149,18 @@ namespace WindowsFormsApp1
             this.panel2.TabIndex = 12;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
-            // comboBox1
+            // cmbSubject
             // 
-            this.comboBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.comboBox1.BackColor = System.Drawing.Color.White;
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.comboBox1.ForeColor = System.Drawing.Color.Brown;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(63, 8);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 24);
-            this.comboBox1.TabIndex = 13;
-            this.comboBox1.Visible = false;
+            this.cmbSubject.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cmbSubject.BackColor = System.Drawing.Color.White;
+            this.cmbSubject.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbSubject.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.cmbSubject.ForeColor = System.Drawing.Color.Brown;
+            this.cmbSubject.FormattingEnabled = true;
+            this.cmbSubject.Location = new System.Drawing.Point(63, 8);
+            this.cmbSubject.Name = "cmbSubject";
+            this.cmbSubject.Size = new System.Drawing.Size(150, 24);
+            this.cmbSubject.TabIndex = 13;
             // 
             // label1
             // 
@@ -234,7 +233,7 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Label lblKwang;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbSubject;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListView lvwLecture;
         private System.Windows.Forms.Label label2;

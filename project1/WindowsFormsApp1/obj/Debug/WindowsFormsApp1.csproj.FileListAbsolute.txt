@@ -54,3 +54,5 @@ C:\Users\YoungSeo\Desktop\HomeWork\klasProject\ApplicationSoftware\project1\Wind
 C:\Users\user\Desktop\ApplicationSoftware\project1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.ArticleViewDisplay.resources
 C:\Users\user\Desktop\ApplicationSoftware\project1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.ArticleViewMain.resources
 C:\Users\user\Desktop\ApplicationSoftware\project1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.LectureViewForm.resources
+C:\Users\no020\OneDrive\바탕 화면\응소실\ApplicationSoftware\project1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.ArticleViewDisplay.resources
+C:\Users\no020\OneDrive\바탕 화면\응소실\ApplicationSoftware\project1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.ArticleViewMain.resources
