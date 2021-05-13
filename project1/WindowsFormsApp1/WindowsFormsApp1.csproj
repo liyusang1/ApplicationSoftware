@@ -56,6 +56,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddLectureForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddLectureForm.Designer.cs">
+      <DependentUpon>AddLectureForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ArticleViewDisplay.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,6 +87,18 @@
       <DependentUpon>Form2.cs</DependentUpon>
     </Compile>
     <Compile Include="Info.cs" />
+    <Compile Include="LecturePlayer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LecturePlayer.Designer.cs">
+      <DependentUpon>LecturePlayer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LectureUploadForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LectureUploadForm.Designer.cs">
+      <DependentUpon>LectureUploadForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="LectureViewForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +113,9 @@
     <Compile Include="SignUpForm.Designer.cs">
       <DependentUpon>SignUpForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AddLectureForm.resx">
+      <DependentUpon>AddLectureForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ArticleViewDisplay.resx">
       <DependentUpon>ArticleViewDisplay.cs</DependentUpon>
     </EmbeddedResource>
@@ -106,6 +127,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LecturePlayer.resx">
+      <DependentUpon>LecturePlayer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LectureUploadForm.resx">
+      <DependentUpon>LectureUploadForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LectureViewForm.resx">
       <DependentUpon>LectureViewForm.cs</DependentUpon>
@@ -139,6 +166,25 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="university.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AxShockwaveFlashObjects">
+      <Guid>{D27CDB6B-AE6D-11CF-96B8-444553540000}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="ShockwaveFlashObjects">
+      <Guid>{D27CDB6B-AE6D-11CF-96B8-444553540000}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
