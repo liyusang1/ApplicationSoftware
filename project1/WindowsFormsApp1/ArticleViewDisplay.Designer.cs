@@ -44,6 +44,7 @@
             // 
             // articleTB
             // 
+            this.articleTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.articleTB.Location = new System.Drawing.Point(12, 95);
             this.articleTB.Multiline = true;
             this.articleTB.Name = "articleTB";
@@ -54,6 +55,7 @@
             // 
             // btnClose
             // 
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.Location = new System.Drawing.Point(628, 548);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(60, 40);
@@ -64,6 +66,7 @@
             // 
             // btnModify
             // 
+            this.btnModify.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnModify.Location = new System.Drawing.Point(78, 548);
             this.btnModify.Name = "btnModify";
             this.btnModify.Size = new System.Drawing.Size(60, 40);
@@ -74,6 +77,7 @@
             // 
             // btnDelete
             // 
+            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.Location = new System.Drawing.Point(12, 548);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(60, 40);
@@ -84,7 +88,7 @@
             // 
             // titleTB
             // 
-            this.titleTB.Font = new System.Drawing.Font("굴림", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.titleTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.titleTB.Location = new System.Drawing.Point(12, 23);
             this.titleTB.MaxLength = 20;
             this.titleTB.Name = "titleTB";
@@ -140,6 +144,7 @@
             // 
             // btnSave
             // 
+            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.Location = new System.Drawing.Point(562, 548);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(60, 40);

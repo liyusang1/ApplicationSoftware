@@ -161,7 +161,6 @@ namespace WindowsFormsApp1
             this.cmbSubject.Name = "cmbSubject";
             this.cmbSubject.Size = new System.Drawing.Size(150, 24);
             this.cmbSubject.TabIndex = 13;
-            this.cmbSubject.SelectedIndexChanged += new System.EventHandler(this.cmbSubject_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -174,14 +173,12 @@ namespace WindowsFormsApp1
             // 
             // lvwLecture
             // 
-            this.lvwLecture.FullRowSelect = true;
             this.lvwLecture.HideSelection = false;
             this.lvwLecture.Location = new System.Drawing.Point(19, 48);
             this.lvwLecture.Name = "lvwLecture";
             this.lvwLecture.Size = new System.Drawing.Size(936, 389);
             this.lvwLecture.TabIndex = 0;
             this.lvwLecture.UseCompatibleStateImageBehavior = false;
-            this.lvwLecture.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lvwLecture_MouseDoubleClick);
             // 
             // label2
             // 

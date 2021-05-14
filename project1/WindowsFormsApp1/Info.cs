@@ -113,7 +113,7 @@ namespace WindowsFormsApp1
             get { return visibleArticles; }
             set { visibleArticles = value; }
         }
-        
+
     }
 
     class Professor : User
@@ -221,13 +221,30 @@ namespace WindowsFormsApp1
 
     public class Article
     {
-        private int articleID; //모든 글들을 구별할 수 있게하는 ID
+        private int articleID; //모든 글들을 구별할 수 있게하는 ID, 글이 생긴 순서로 ID를 정하자.  ex) 첫번째 작성된글 ID = 1
         private string subjectname; //과목명
         private string title; //제목
         private string author; //작성자
         private string date; //날짜
         private int views; //조회수
         private List<string> content; //글내용
+        public (string,int,bool,bool,bool) article_font_type; //(글꼴이름,글자크기,굵기유무,기울임유무,밑줄유무)
+
+        public Article() {}
+
+        public Article(int articleID,string subjectname,
+            string title,string author,string date,int views, 
+            List<string> content, (string,int,bool,bool,bool) article_font_type)
+        {
+            this.articleID = articleID;
+            this.subjectname = subjectname;
+            this.title = title;
+            this.author = author;
+            this.date = date;
+            this.views = views;
+            this.content = content;
+            this.article_font_type = article_font_type;
+        }
 
         public int ArticleID
         {

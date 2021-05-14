@@ -128,6 +128,9 @@ namespace WindowsFormsApp1
         {
             if(cmbMenu.SelectedIndex == 1)            {
                 //강의자료실 폼으로 이동
+                ArticleViewMain articleViewMain = new ArticleViewMain(std);
+                this.Hide();
+                articleViewMain.Show();
             }
             else if(cmbMenu.SelectedIndex == 2){
                 //온라인강의보기 폼을 이동

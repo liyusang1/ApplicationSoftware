@@ -29,13 +29,14 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.department = new System.Windows.Forms.Label();
             this.cmbMenu = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.txtUser = new System.Windows.Forms.TextBox();
             this.lblUniv = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
             this.lblKwang = new System.Windows.Forms.Label();
-            this.cmbLectureList = new System.Windows.Forms.ComboBox();
+            this.cmbSubject = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -49,6 +50,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.panel1.Controls.Add(this.department);
             this.panel1.Controls.Add(this.cmbMenu);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.txtUser);
@@ -59,6 +61,17 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1003, 77);
             this.panel1.TabIndex = 12;
+            // 
+            // department
+            // 
+            this.department.AutoSize = true;
+            this.department.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.department.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.department.Location = new System.Drawing.Point(693, 43);
+            this.department.Name = "department";
+            this.department.Size = new System.Drawing.Size(91, 20);
+            this.department.TabIndex = 14;
+            this.department.Text = "department";
             // 
             // cmbMenu
             // 
@@ -73,6 +86,7 @@
             this.cmbMenu.Size = new System.Drawing.Size(121, 24);
             this.cmbMenu.TabIndex = 12;
             this.cmbMenu.Visible = false;
+            this.cmbMenu.SelectedIndexChanged += new System.EventHandler(this.cmbMenu_SelectedIndexChanged);
             // 
             // button1
             // 
@@ -87,6 +101,7 @@
             this.button1.Text = "≡";
             this.button1.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // txtUser
             // 
@@ -122,6 +137,7 @@
             this.btnExit.TabIndex = 9;
             this.btnExit.Text = "나가기";
             this.btnExit.UseVisualStyleBackColor = false;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // lblKwang
             // 
@@ -134,19 +150,19 @@
             this.lblKwang.TabIndex = 0;
             this.lblKwang.Text = "KWANGWOON";
             // 
-            // cmbLectureList
+            // cmbSubject
             // 
-            this.cmbLectureList.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.cmbLectureList.BackColor = System.Drawing.Color.White;
-            this.cmbLectureList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbLectureList.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.cmbLectureList.ForeColor = System.Drawing.Color.Brown;
-            this.cmbLectureList.FormattingEnabled = true;
-            this.cmbLectureList.Location = new System.Drawing.Point(63, 8);
-            this.cmbLectureList.Name = "cmbLectureList";
-            this.cmbLectureList.Size = new System.Drawing.Size(121, 24);
-            this.cmbLectureList.TabIndex = 13;
-            this.cmbLectureList.Visible = false;
+            this.cmbSubject.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cmbSubject.BackColor = System.Drawing.Color.White;
+            this.cmbSubject.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbSubject.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.cmbSubject.ForeColor = System.Drawing.Color.Brown;
+            this.cmbSubject.FormattingEnabled = true;
+            this.cmbSubject.Location = new System.Drawing.Point(63, 8);
+            this.cmbSubject.Name = "cmbSubject";
+            this.cmbSubject.Size = new System.Drawing.Size(150, 24);
+            this.cmbSubject.TabIndex = 13;
+            this.cmbSubject.SelectedIndexChanged += new System.EventHandler(this.cmbSubject_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -160,7 +176,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.Control;
-            this.panel2.Controls.Add(this.cmbLectureList);
+            this.panel2.Controls.Add(this.cmbSubject);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Location = new System.Drawing.Point(12, 93);
             this.panel2.Name = "panel2";
@@ -179,12 +195,15 @@
             // 
             // lvwArticles
             // 
+            this.lvwArticles.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lvwArticles.FullRowSelect = true;
             this.lvwArticles.HideSelection = false;
             this.lvwArticles.Location = new System.Drawing.Point(19, 48);
             this.lvwArticles.Name = "lvwArticles";
             this.lvwArticles.Size = new System.Drawing.Size(936, 389);
             this.lvwArticles.TabIndex = 0;
             this.lvwArticles.UseCompatibleStateImageBehavior = false;
+            this.lvwArticles.Click += new System.EventHandler(this.lvwArticles_Click);
             // 
             // label2
             // 
@@ -209,7 +228,6 @@
             this.Name = "ArticleViewMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ArticleViewMain";
-            this.Load += new System.EventHandler(this.ArticleViewMain_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -229,11 +247,12 @@
         private System.Windows.Forms.Label lblUniv;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Label lblKwang;
-        private System.Windows.Forms.ComboBox cmbLectureList;
+        private System.Windows.Forms.ComboBox cmbSubject;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.ListView lvwArticles;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label department;
     }
 }

@@ -12,16 +12,31 @@ namespace WindowsFormsApp1
 {
     public partial class ArticleViewDisplay : Form
     {
-        public ArticleViewDisplay()
+        Article selectedArticle;
+        public ArticleViewDisplay(Article article)
         {
+            selectedArticle = article;
+
             // 현재 접속되어있는 사용자가 학생이라면 수정/삭제 버튼을 비활성화 시켜아한다.
             InitializeComponent();
-            btnSave.Enabled = false;
-            cmbFont.Enabled = false;
-            cmbSize.Enabled = false;
-            btn굵게.Enabled = false;
-            btn기울임.Enabled = false;
-            btn밑줄.Enabled = false;
+            btnSave.Hide();
+            cmbFont.Hide();
+            cmbSize.Hide();
+            btn굵게.Hide();
+            btn기울임.Hide();
+            btn밑줄.Hide();
+
+            if (selectedArticle.Content == null)
+                return;
+
+            titleTB.Text += selectedArticle.Title;
+
+            foreach (var element in selectedArticle.Content)
+            {
+                articleTB.Text += element;
+                articleTB.Text += System.Environment.NewLine;
+            }
+            
         }
 
         private void btnClose_Click(object sender, EventArgs e)
