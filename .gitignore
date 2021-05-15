@@ -517,6 +517,6 @@ $RECYCLE.BIN/
 
 # End of https://www.toptal.com/developers/gitignore/api/csharp,windows,node
 
-bin/
-obj/
-.vs/
+project/.vs/
+project/WindowsFormsApp1/bin/
+project/WindowsFormsApp1/obj/
