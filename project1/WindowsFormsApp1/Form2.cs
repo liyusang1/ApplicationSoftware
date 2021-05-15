@@ -29,7 +29,7 @@ namespace WindowsFormsApp1
 
             department.Text =  st.Department; //학과표시
             
-            std = new Student(st.Id, st.Pw, st.Name, st.Number, st.Tokens, st.Department, st.Friends, st.Subjects, st.Scores);
+            std = new Student(st.Id, st.Pw, st.Name, st.Tokens, st.Department, st.Friends, st.Subjects, st.Scores);
 
 
             var client = new RestClient("https://team.liyusang1.site/schedule");

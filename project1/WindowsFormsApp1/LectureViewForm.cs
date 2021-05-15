@@ -19,7 +19,7 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
 
-            std = new Student(st.Id, st.Pw, st.Name, st.Number, st.Tokens, st.Department, st.Friends, st.Subjects, st.Scores);
+            std = new Student(st.Id, st.Pw, st.Name, st.Tokens, st.Department, st.Friends, st.Subjects, st.Scores);
             txtUser.Text = st.Id + " " + st.Name;
             string[] menu = { "시간표", "강의자료실", "온라인강의보기" };
             cmbMenu.Items.AddRange(menu);

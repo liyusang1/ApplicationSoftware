@@ -22,7 +22,6 @@ namespace WindowsFormsApp1
         private string id; // 아이디
         private string pw; // 비밀번호
         private string name; // 이름
-        private int number; // 번호
         private string tokens; // 유상씨가 추가하래서 한 것
         private string department; // 학과명
 
@@ -44,11 +43,6 @@ namespace WindowsFormsApp1
             set { name = value; }
         }
 
-        public int Number
-        {
-            get { return number; }
-            set { number = value; }
-        }
 
         public string Tokens
         {
@@ -75,13 +69,12 @@ namespace WindowsFormsApp1
             Tokens = tokens;
         }
 
-        public Student(string id, string pw, string name, int number, string tokens, string department,
+        public Student(string id, string pw, string name, string tokens, string department,
             List<Student> friends, List<Subject> subjects, List<(Subject, Score)> scores)
         {
             Id = id;
             Pw = pw;
             Name = name;
-            Number = number; //id가 학번이라서 지워도 될 것 같음
 
             Tokens = tokens;
             Department = department;
@@ -126,13 +119,12 @@ namespace WindowsFormsApp1
             Tokens = tokens;
         }
 
-        public Professor(string id, string pw, string name, int number, string tokens, string department,
+        public Professor(string id, string pw, string name, string tokens, string department,
              List<Subject> subjects)
         {
             Id = id;
             Pw = pw;
             Name = name;
-            Number = number;
             Tokens = tokens;
             Department = department;
             this.subjects = subjects;
@@ -227,14 +219,14 @@ namespace WindowsFormsApp1
         private string author; //작성자
         private string date; //날짜
         private int views; //조회수
-        private List<string> content; //글내용
+        private string content; //글내용
         public (string,int,bool,bool,bool) article_font_type; //(글꼴이름,글자크기,굵기유무,기울임유무,밑줄유무)
 
         public Article() {}
 
         public Article(int articleID,string subjectname,
             string title,string author,string date,int views, 
-            List<string> content, (string,int,bool,bool,bool) article_font_type)
+            string content, (string,int,bool,bool,bool) article_font_type)
         {
             this.articleID = articleID;
             this.subjectname = subjectname;
@@ -282,7 +274,7 @@ namespace WindowsFormsApp1
             set { views = value; }
         }
 
-        public List<string> Content
+        public string Content
         {
             get { return content; }
             set { content = value; }

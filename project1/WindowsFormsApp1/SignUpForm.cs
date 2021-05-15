@@ -71,7 +71,7 @@ namespace WindowsFormsApp1
                 List<Subject> usr_subject = new List<Subject>(new Subject[7]);
                 List<(Subject, Score)> usr_score = new List<(Subject, Score)>(new (Subject, Score)[7]);
 
-                Student stu = new Student(id, password, name, Convert.ToInt32(id), "", major, usr_friend, usr_subject, usr_score);
+                Student stu = new Student(id, password, name, "", major, usr_friend, usr_subject, usr_score);
                 TimeTableForm timetable = new TimeTableForm(stu);
                 this.Close();
                 timetable.Show();

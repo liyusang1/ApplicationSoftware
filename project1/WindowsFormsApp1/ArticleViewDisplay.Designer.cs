@@ -38,7 +38,6 @@
             this.btn밑줄 = new System.Windows.Forms.Button();
             this.cmbFont = new System.Windows.Forms.ComboBox();
             this.cmbSize = new System.Windows.Forms.ComboBox();
-            this.fontDialog1 = new System.Windows.Forms.FontDialog();
             this.btnSave = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -105,6 +104,7 @@
             this.btn굵게.TabIndex = 21;
             this.btn굵게.Text = "가";
             this.btn굵게.UseVisualStyleBackColor = true;
+            this.btn굵게.Click += new System.EventHandler(this.btn굵게_Click);
             // 
             // btn기울임
             // 
@@ -115,6 +115,7 @@
             this.btn기울임.TabIndex = 22;
             this.btn기울임.Text = "가";
             this.btn기울임.UseVisualStyleBackColor = true;
+            this.btn기울임.Click += new System.EventHandler(this.btn기울임_Click);
             // 
             // btn밑줄
             // 
@@ -125,6 +126,7 @@
             this.btn밑줄.TabIndex = 23;
             this.btn밑줄.Text = "가";
             this.btn밑줄.UseVisualStyleBackColor = true;
+            this.btn밑줄.Click += new System.EventHandler(this.btn밑줄_Click);
             // 
             // cmbFont
             // 
@@ -133,6 +135,7 @@
             this.cmbFont.Name = "cmbFont";
             this.cmbFont.Size = new System.Drawing.Size(89, 20);
             this.cmbFont.TabIndex = 24;
+            this.cmbFont.SelectedIndexChanged += new System.EventHandler(this.cmbFont_SelectedIndexChanged);
             // 
             // cmbSize
             // 
@@ -141,6 +144,7 @@
             this.cmbSize.Name = "cmbSize";
             this.cmbSize.Size = new System.Drawing.Size(89, 20);
             this.cmbSize.TabIndex = 25;
+            this.cmbSize.SelectedIndexChanged += new System.EventHandler(this.cmbSize_SelectedIndexChanged);
             // 
             // btnSave
             // 
@@ -191,7 +195,6 @@
         private System.Windows.Forms.Button btn밑줄;
         private System.Windows.Forms.ComboBox cmbFont;
         private System.Windows.Forms.ComboBox cmbSize;
-        private System.Windows.Forms.FontDialog fontDialog1;
         private System.Windows.Forms.Button btnSave;
     }
 }

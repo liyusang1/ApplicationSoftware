@@ -19,7 +19,7 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
 
-            std = new Student(st.Id, st.Pw, st.Name, st.Number, st.Tokens, st.Department, st.Friends, st.Subjects, st.Scores);
+            std = new Student(st.Id, st.Pw, st.Name, st.Tokens, st.Department, st.Friends, st.Subjects, st.Scores);
             department.Text = st.Department;
             txtUser.Text = st.Id + " " + st.Name;
             string[] menu = { "시간표", "강의자료실", "온라인강의보기" };
@@ -60,13 +60,10 @@ namespace WindowsFormsApp1
                 }
             }
             cmbSubject.SelectedIndex = 0;
-            
+
             //글이 잘 들어왔다는 가정하에 실험하느라 임시로 넣음
             // 글을 서버에서 가져와서 visible_article에 넣어주면 됨
-            List<string> content = new List<string>(3);
-            content.Add("안녕하세요");
-            content.Add("반갑습니다.");
-            content.Add("대 학 물 리 학");
+            string content = "안녕하세요\r\n반갑습니다.";
             var article_font_type = ("굴림", 10, true, true, true);
             Article testarticle1 = new Article(1,"대학물리학","1장","김코딩","2021-03-01",1,content,article_font_type);
             List<Article> visible_articles = new List<Article>(10);
@@ -91,13 +88,6 @@ namespace WindowsFormsApp1
             }
 
             //역순으로 정렬하는 거 구현해야함
-        }
-
-        // lvwArticles에 selected Item을 클릭했을때 일어나는 이벤트
-        // 해당 글을 담고 있는 Article class를 이용하여 ArticleViewDisplay Form을 실행한다.
-        private void lvwArticlesSelectedItemClicked(object sender, EventArgs e)
-        {
-
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -169,7 +159,8 @@ namespace WindowsFormsApp1
                     }
                 }
             }
-            ArticleViewDisplay articleViewDisplay = new ArticleViewDisplay(selectedArticle);
+            this.Close();
+            ArticleViewDisplay articleViewDisplay = new ArticleViewDisplay(selectedArticle,std);
             articleViewDisplay.Show();
         }
     }
