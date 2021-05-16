@@ -95,18 +95,29 @@ namespace WindowsFormsApp1
                 int identification = (int)jObject["identification"]; //identification이 0이라면 학생, 1이라면 교수임 조건문을 활용하여 폼이 다르게 뜨도록 설계해야합니다.
 
                 //jwtToken을 저장해야함
-
                 this.Hide(); // 로그인 창 숨김
 
-                //학생이라 가정
-                List<Student> usr_friend = new List<Student>(new Student[10]);
-                List<Subject> usr_subject = new List<Subject>(new Subject[7]);
-                List<(Subject, Score)> usr_score = new List<(Subject, Score)>(new (Subject, Score)[7]);
-                
-                Student stu = new Student(id, password, name, jwtToken, department, usr_friend, usr_subject, usr_score);
-                
-                TimeTableForm TimeTable = new TimeTableForm(stu); // 로그인 시 첫 화면은 시간표 폼을 열음
-                TimeTable.Show();
+                if (identification == 0)    //학생이라면
+                {
+                    List<Student> usr_friend = new List<Student>(new Student[10]);
+                    List<Subject> usr_subject = new List<Subject>(new Subject[7]);
+                    List<(Subject, Score)> usr_score = new List<(Subject, Score)>(new (Subject, Score)[7]);
+
+                    Student stu = new Student(id, password, name, jwtToken, department, usr_friend, usr_subject, usr_score);
+
+                    TimeTableForm TimeTable = new TimeTableForm(stu); // 로그인 시 첫 화면은 시간표 폼을 열음
+                    TimeTable.Show();
+                }
+                else   //교수라면
+                {
+                    // List<Professor> pro_friend = new List<Professor>(new Professor[10]); 매개변수에 친구가 없어서 일단은 그냥 놔둠. 필요하다면 추가바람.
+                    List<Subject> pro_subject = new List<Subject>(new Subject[7]);
+
+                    Professor pro = new Professor(id, password, name, jwtToken, department, pro_subject);
+
+                    PTimeTableForm PTimeTable = new PTimeTableForm(pro);
+                    PTimeTable.Show();
+                }
             }
             
             //로그인 실패시 에러메시지 출력되도록
@@ -114,11 +125,6 @@ namespace WindowsFormsApp1
             {
                 panelError.Show();
             }
-
-            /*
-              if()문으로 유저의 아이디와 비밀번호를 비교함. 추가 예정
-            */
-
         }
 
         private void btnSignUp_Click(object sender, EventArgs e)

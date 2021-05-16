@@ -1,7 +1,7 @@
 ﻿
 namespace WindowsFormsApp1
 {
-    partial class TimeTableForm
+    partial class PTimeTableForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,17 +29,16 @@ namespace WindowsFormsApp1
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.btnExit = new System.Windows.Forms.Button();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.department = new System.Windows.Forms.Label();
             this.cmbMenu = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnSelect = new System.Windows.Forms.Button();
             this.txtUser = new System.Windows.Forms.TextBox();
             this.lblUniv = new System.Windows.Forms.Label();
+            this.btnExit = new System.Windows.Forms.Button();
             this.lblKwang = new System.Windows.Forms.Label();
-            this.dgvTime = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -49,40 +48,28 @@ namespace WindowsFormsApp1
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.dgvTime = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTime)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTime)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnExit
-            // 
-            this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExit.BackColor = System.Drawing.SystemColors.Info;
-            this.btnExit.FlatAppearance.BorderSize = 0;
-            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExit.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(927, 12);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(64, 21);
-            this.btnExit.TabIndex = 9;
-            this.btnExit.Text = "나가기";
-            this.btnExit.UseVisualStyleBackColor = false;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.panel1.Controls.Add(this.department);
             this.panel1.Controls.Add(this.cmbMenu);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.btnSelect);
             this.panel1.Controls.Add(this.txtUser);
             this.panel1.Controls.Add(this.lblUniv);
             this.panel1.Controls.Add(this.btnExit);
             this.panel1.Controls.Add(this.lblKwang);
-            this.panel1.Location = new System.Drawing.Point(-1, 0);
+            this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1003, 77);
-            this.panel1.TabIndex = 10;
+            this.panel1.Size = new System.Drawing.Size(1000, 77);
+            this.panel1.TabIndex = 11;
             // 
             // department
             // 
@@ -103,27 +90,27 @@ namespace WindowsFormsApp1
             this.cmbMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.cmbMenu.ForeColor = System.Drawing.Color.Brown;
             this.cmbMenu.FormattingEnabled = true;
-            this.cmbMenu.Location = new System.Drawing.Point(288, 14);
+            this.cmbMenu.Location = new System.Drawing.Point(287, 14);
             this.cmbMenu.Name = "cmbMenu";
             this.cmbMenu.Size = new System.Drawing.Size(121, 24);
             this.cmbMenu.TabIndex = 12;
             this.cmbMenu.Visible = false;
-            this.cmbMenu.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.cmbMenu.SelectedIndexChanged += new System.EventHandler(this.cmbMenu_SelectedIndexChanged);
             // 
-            // button1
+            // btnSelect
             // 
-            this.button1.BackColor = System.Drawing.Color.Maroon;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.button1.ForeColor = System.Drawing.SystemColors.Control;
-            this.button1.Location = new System.Drawing.Point(233, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(54, 47);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "≡";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnSelect.BackColor = System.Drawing.Color.Maroon;
+            this.btnSelect.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
+            this.btnSelect.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.btnSelect.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnSelect.Location = new System.Drawing.Point(233, 12);
+            this.btnSelect.Name = "btnSelect";
+            this.btnSelect.Size = new System.Drawing.Size(54, 47);
+            this.btnSelect.TabIndex = 11;
+            this.btnSelect.Text = "≡";
+            this.btnSelect.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.btnSelect.UseVisualStyleBackColor = false;
+            this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
             // 
             // txtUser
             // 
@@ -146,6 +133,21 @@ namespace WindowsFormsApp1
             this.lblUniv.TabIndex = 1;
             this.lblUniv.Text = "UNIVERSITY";
             // 
+            // btnExit
+            // 
+            this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExit.BackColor = System.Drawing.SystemColors.Info;
+            this.btnExit.FlatAppearance.BorderSize = 0;
+            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExit.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.Location = new System.Drawing.Point(924, 12);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(64, 21);
+            this.btnExit.TabIndex = 9;
+            this.btnExit.Text = "나가기";
+            this.btnExit.UseVisualStyleBackColor = false;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
             // lblKwang
             // 
             this.lblKwang.AutoSize = true;
@@ -157,40 +159,10 @@ namespace WindowsFormsApp1
             this.lblKwang.TabIndex = 0;
             this.lblKwang.Text = "KWANGWOON";
             // 
-            // dgvTime
-            // 
-            this.dgvTime.AllowUserToAddRows = false;
-            this.dgvTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvTime.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvTime.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvTime.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvTime.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvTime.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvTime.Location = new System.Drawing.Point(12, 93);
-            this.dgvTime.Name = "dgvTime";
-            this.dgvTime.RowHeadersVisible = false;
-            this.dgvTime.RowTemplate.Height = 23;
-            this.dgvTime.RowTemplate.ReadOnly = true;
-            this.dgvTime.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvTime.Size = new System.Drawing.Size(976, 214);
-            this.dgvTime.TabIndex = 11;
-            // 
             // panel2
             // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.label3);
@@ -201,10 +173,10 @@ namespace WindowsFormsApp1
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.panel2.Location = new System.Drawing.Point(12, 374);
+            this.panel2.Location = new System.Drawing.Point(12, 449);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(976, 139);
-            this.panel2.TabIndex = 12;
+            this.panel2.TabIndex = 13;
             // 
             // label6
             // 
@@ -291,40 +263,71 @@ namespace WindowsFormsApp1
             this.label1.TabIndex = 0;
             this.label1.Text = "0교시(8:00 ~ 8:50)";
             // 
-            // TimeTableForm
+            // dgvTime
+            // 
+            this.dgvTime.AllowUserToAddRows = false;
+            this.dgvTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvTime.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvTime.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTime.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvTime.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvTime.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvTime.Location = new System.Drawing.Point(12, 115);
+            this.dgvTime.Name = "dgvTime";
+            this.dgvTime.RowHeadersVisible = false;
+            this.dgvTime.RowTemplate.Height = 23;
+            this.dgvTime.RowTemplate.ReadOnly = true;
+            this.dgvTime.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvTime.Size = new System.Drawing.Size(976, 214);
+            this.dgvTime.TabIndex = 14;
+            // 
+            // PTimeTableForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PeachPuff;
             this.ClientSize = new System.Drawing.Size(1000, 600);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.dgvTime);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "TimeTableForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form2";
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TimeTableForm_MouseDown);
-            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.TimeTableForm_MouseMove);
+            this.Name = "PTimeTableForm";
+            this.Text = "PTimeTableForm";
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PTimeTableForm_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PTimeTableForm_MouseMove);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTime)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTime)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label lblUniv;
-        private System.Windows.Forms.Label lblKwang;
-        private System.Windows.Forms.TextBox txtUser;
-        private System.Windows.Forms.DataGridView dgvTime;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label department;
         private System.Windows.Forms.ComboBox cmbMenu;
+        private System.Windows.Forms.Button btnSelect;
+        private System.Windows.Forms.TextBox txtUser;
+        private System.Windows.Forms.Label lblUniv;
+        private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.Label lblKwang;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label3;
@@ -334,6 +337,6 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label department;
+        private System.Windows.Forms.DataGridView dgvTime;
     }
 }

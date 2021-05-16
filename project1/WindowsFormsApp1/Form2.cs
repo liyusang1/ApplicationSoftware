@@ -68,23 +68,52 @@ namespace WindowsFormsApp1
 
                 DataTable time = new DataTable();
                 //열 추가
-                time.Columns.Add(" ", typeof(string));
+                time.Columns.Add(" ", typeof(int));
                 time.Columns.Add("월", typeof(string));
                 time.Columns.Add("화", typeof(string));
                 time.Columns.Add("수", typeof(string));
                 time.Columns.Add("목", typeof(string));
                 time.Columns.Add("금", typeof(string));
 
-                //행 추가 임의로
-                time.Rows.Add("0", "데이터베이스", "", "", "", "");
-                time.Rows.Add("1", "", "자료구조", "", "", "");
-                time.Rows.Add("2", "", "", "알고리즘", "", "");
-                time.Rows.Add("3", "", "", "", "운영체제", "");
-                time.Rows.Add("4", "", "", "", "", "컴퓨터구조");
-                time.Rows.Add("5", "선형대수학", "", "", "", "");
-                time.Rows.Add("6", "", "", "공학수학", "", "");
-                time.Rows.Add("99", "", "", "", "", "");
+                //행 추가
+                for (int i = 0; i < 8; i++) {
+                    string[] day = new string[5];
+                    for (int j = 0; j < scheduleCount; j++)
+                    {
+                        string className = jObject["result"][j]["className"].ToString();
+                        int time1 = (int)jObject["result"][j]["time1"];
+                        int day1 = (int)jObject["result"][j]["day1"];
+                        int time2 = (int)jObject["result"][j]["time2"];
+                        int day2 = (int)jObject["result"][j]["day2"];
 
+                        if (time1 == i)
+                            day[day1-1] = className;
+                        if (time2 == i)
+                            day[day2-1] = className;
+
+                        if(j == scheduleCount - 1)
+                        {
+                            DataRow week = time.NewRow();
+                            for(int k = 0; k < 6; k++)
+                            {
+                                if (k == 0)
+                                {
+                                    if (i != 7)
+                                        week[k] = i;
+                                    else
+                                        week[k] = 99;
+                                }
+                                else
+                                {
+                                    week[k] = day[k-1];
+                                }
+                            }
+                            time.Rows.Add(week);
+                        }
+                            
+                    }
+                }   //대학물리학(2,2)이 알고리즘(2,2)때문에 씹힘. 시간표 수정바람.
+                
                 dgvTime.DataSource = time;
 
                 string[] menu = { "시간표", "강의자료실", "온라인강의보기" };
@@ -126,7 +155,7 @@ namespace WindowsFormsApp1
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(cmbMenu.SelectedIndex == 1)            {
+            if(cmbMenu.SelectedIndex == 1) {
                 //강의자료실 폼으로 이동
                 ArticleViewMain articleViewMain = new ArticleViewMain(std);
                 this.Hide();

@@ -109,7 +109,7 @@ namespace WindowsFormsApp1
 
     }
 
-    class Professor : User
+    public class Professor : User
     {
         private List<Subject> subjects; // 가르치는 과목 목록
                                         // 과목별 학생목록은 subject에 students에 있음
