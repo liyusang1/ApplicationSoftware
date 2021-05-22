@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using RestSharp; //RestSharp 라이브러리를 사용 예정
+using Newtonsoft.Json;  //Newtonsoft 라이브러리 사용예정
+using Newtonsoft.Json.Linq;
 
 namespace WindowsFormsApp1
 {
@@ -160,16 +163,45 @@ namespace WindowsFormsApp1
             titleTB.ReadOnly = true;
             articleTB.ReadOnly = true;
 
+            string className = selectedArticle.SubjectName;
+            selectedArticle.Title = titleTB.Text;
             selectedArticle.Content = articleTB.Text;
             selectedArticle.Font_Size = (int)articleTB.Font.Size;
-            selectedArticle.Font_type = articleTB.Font.Name;
             selectedArticle.Is_bold = articleTB.Font.Bold;
             selectedArticle.Is_italic = articleTB.Font.Italic;
             selectedArticle.Is_underline = articleTB.Font.Underline;
-            selectedArticle.Title = titleTB.Text;
+            selectedArticle.Font_type = articleTB.Font.Name;
+
             //만약 이 글이 새로운 글일 때, id를 설정해줘야한다.
             if (selectedArticle.ArticleID < 0)
             {
+                var client = new RestClient("https://team.liyusang1.site/class-reference");
+                client.Timeout = -1;
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("x-access-token", pro.Tokens);
+                request.AddHeader("Content-Type", "application/json");
+
+                //서버로 값을 보냄
+                request.AddJsonBody(
+                           new
+                           {
+                               className = className,
+                               contentName = selectedArticle.Title,
+                               content = selectedArticle.Content,
+                               fontSize = selectedArticle.Font_Size,
+                               isBold = selectedArticle.Is_bold,
+                               isItalic = selectedArticle.Is_italic,
+                               isUnderline = selectedArticle.Is_underline,
+                               fontType = selectedArticle.Font_type
+                           });
+
+                IRestResponse response = client.Execute(request);
+
+                //받아온 데이터를 json형태로 묶음
+                //var jObject = JObject.Parse(response.Content);
+
+                //code 를 resultCode에 저장
+                //int resultCode = (int)jObject["code"];
                 //selectedArticle.ArticleID = ;
                 //selectedArticle.Date = System.DateTime.Now.ToString("yyyy-MM-dd");
             }
@@ -209,6 +241,11 @@ namespace WindowsFormsApp1
         private void btn밑줄_Click(object sender, EventArgs e)
         {
             articleTB.Font = new Font(Font.FontFamily, articleTB.Font.Size, articleTB.Font.Style ^ FontStyle.Underline);
+        }
+
+        private void ArticleViewDisplay_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

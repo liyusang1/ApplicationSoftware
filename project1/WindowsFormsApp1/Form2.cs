@@ -15,6 +15,12 @@ using Newtonsoft.Json.Linq;
 //id : 2021
 //password :test123
 
+//test 교수 아이디
+//id : 0000 password:test123 (김물리)
+
+//test 교수 아이디
+//id : 0001 password:test123 (김코딩)
+
 namespace WindowsFormsApp1
 {
     public partial class TimeTableForm : Form
@@ -112,7 +118,7 @@ namespace WindowsFormsApp1
                         }
                             
                     }
-                }   //대학물리학(2,2)이 알고리즘(2,2)때문에 씹힘. 시간표 수정바람.
+                }   
                 
                 dgvTime.DataSource = time;
 

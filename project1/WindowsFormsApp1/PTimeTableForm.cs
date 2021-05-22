@@ -7,6 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using RestSharp; //RestSharp 라이브러리를 사용 예정
+using Newtonsoft.Json;  //Newtonsoft 라이브러리 사용예정
+using Newtonsoft.Json.Linq;
+
+//testId 
+//id : 2021
+//password :test123
+
+//test 교수 아이디
+//id : 0000 password:test123 (김물리)
+
+//test 교수 아이디
+//id : 0001 password:test123 (김코딩)
+
 
 namespace WindowsFormsApp1
 {
@@ -24,11 +38,93 @@ namespace WindowsFormsApp1
 
             pro = new Professor(pr.Id, pr.Pw, pr.Name, pr.Tokens, pr.Department,pr.Subjects);
 
-            /*
-              교수 정보가 없어서 일단은 비워둠.
-             */
+            var client = new RestClient("https://team.liyusang1.site/schedule");
+            client.Timeout = -1;
+            var request = new RestRequest(Method.GET);
+            request.AddHeader("x-access-token", pr.Tokens);
+            IRestResponse response = client.Execute(request);
 
-            string[] menu = { "시간표", "강의자료실", "온라인강의보기" };
+
+            var jObject = JObject.Parse(response.Content);
+            int resultCode = (int)jObject["code"];
+
+            if (resultCode == 200)
+            {
+                int scheduleCount = (int)jObject["count"]; //이 학생이 수강하고 있는 과목 수
+
+                for (int i = 0; i < scheduleCount; i++)
+                {
+                    string className = jObject["result"][i]["className"].ToString();
+                    int time1 = (int)jObject["result"][i]["time1"];
+                    int day1 = (int)jObject["result"][i]["day1"];
+                    int time2 = (int)jObject["result"][i]["time2"];
+                    int day2 = (int)jObject["result"][i]["day2"];
+                    string classRoom = jObject["result"][i]["classRoom"].ToString();
+                    string professorName = jObject["result"][i]["professorName"].ToString();
+
+                    //체크용
+                    Console.WriteLine(className);
+                    Console.WriteLine(time1);
+                    Console.WriteLine(day1);
+                    Console.WriteLine(time2);
+                    Console.WriteLine(day2);
+                    Console.WriteLine(classRoom);
+                    Console.WriteLine(professorName);
+                }
+
+                DataTable time = new DataTable();
+                //열 추가
+                time.Columns.Add(" ", typeof(int));
+                time.Columns.Add("월", typeof(string));
+                time.Columns.Add("화", typeof(string));
+                time.Columns.Add("수", typeof(string));
+                time.Columns.Add("목", typeof(string));
+                time.Columns.Add("금", typeof(string));
+
+                //행 추가
+                for (int i = 0; i < 8; i++)
+                {
+                    string[] day = new string[5];
+                    for (int j = 0; j < scheduleCount; j++)
+                    {
+                        string className = jObject["result"][j]["className"].ToString();
+                        int time1 = (int)jObject["result"][j]["time1"];
+                        int day1 = (int)jObject["result"][j]["day1"];
+                        int time2 = (int)jObject["result"][j]["time2"];
+                        int day2 = (int)jObject["result"][j]["day2"];
+
+                        if (time1 == i)
+                            day[day1 - 1] = className;
+                        if (time2 == i)
+                            day[day2 - 1] = className;
+
+                        if (j == scheduleCount - 1)
+                        {
+                            DataRow week = time.NewRow();
+                            for (int k = 0; k < 6; k++)
+                            {
+                                if (k == 0)
+                                {
+                                    if (i != 7)
+                                        week[k] = i;
+                                    else
+                                        week[k] = 99;
+                                }
+                                else
+                                {
+                                    week[k] = day[k - 1];
+                                }
+                            }
+                            time.Rows.Add(week);
+                        }
+
+                    }
+                }
+
+                dgvTime.DataSource = time; 
+            }
+       
+        string[] menu = { "시간표", "강의자료실", "온라인강의보기" };
             cmbMenu.Items.AddRange(menu);
             cmbMenu.SelectedIndex = 0;
         }

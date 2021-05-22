@@ -178,6 +178,7 @@
             this.Name = "ArticleViewDisplay";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ArticleViewDisplay";
+            this.Load += new System.EventHandler(this.ArticleViewDisplay_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
