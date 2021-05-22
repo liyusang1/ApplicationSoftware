@@ -166,10 +166,6 @@ namespace WindowsFormsApp1
 
             int notificationCount = (int)jObject["count"]; //모든 글의 합
 
-            int article1 = (int)jObject["result"][0]["contentId"];
-
-            Console.WriteLine(article1);
-
             cmbSubject.SelectedIndex = 0;
             List<Article> visibleArticles = new List<Article>(notificationCount);
             for (int j=0;j< notificationCount; j++)
