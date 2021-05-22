@@ -13,12 +13,46 @@ namespace WindowsFormsApp1
     public partial class ArticleViewDisplay : Form
     {
         Article selectedArticle;
-        Student std;
-        public ArticleViewDisplay(Article article,Student st)
+        Student std = new Student("null");
+        Professor pro = new Professor("null");
+        public ArticleViewDisplay(Article article, Student st)
         {
             selectedArticle = article;
             std = st;
             // 현재 접속되어있는 사용자가 학생이라면 수정/삭제 버튼을 비활성화 시켜아한다.
+            InitializeComponent();
+            btnSave.Hide();
+            cmbFont.Hide();
+            cmbSize.Hide();
+            btn굵게.Hide();
+            btn기울임.Hide();
+            btn밑줄.Hide();
+            btnModify.Hide();
+            btnDelete.Hide();
+
+
+            if (selectedArticle.Content == null)
+                return;
+
+            titleTB.Text += selectedArticle.Title;
+
+            articleTB.Text = selectedArticle.Content;
+
+            Font articlefont = new Font(article.Font_type, article.Font_Size);
+            articleTB.Font = articlefont;
+
+            if (article.Is_bold)
+                articleTB.Font = new Font(articleTB.Font, FontStyle.Bold);
+            if (article.Is_italic)
+                articleTB.Font = new Font(articleTB.Font, FontStyle.Italic);
+            if (article.Is_underline)
+                articleTB.Font = new Font(articleTB.Font, FontStyle.Underline);
+        }
+
+        public ArticleViewDisplay(Article article, Professor pr)
+        {
+            selectedArticle = article;
+            pro = pr;
             InitializeComponent();
             btnSave.Hide();
             cmbFont.Hide();
@@ -34,35 +68,41 @@ namespace WindowsFormsApp1
             titleTB.Text += selectedArticle.Title;
 
             articleTB.Text = selectedArticle.Content;
-
-            Font articlefont = new Font(article.article_font_type.Item1, article.article_font_type.Item2);
+            Font articlefont = new Font(article.Font_type, article.Font_Size);
             articleTB.Font = articlefont;
 
-            if (article.article_font_type.Item3)
+            if (article.Is_bold)
                 articleTB.Font = new Font(articleTB.Font, FontStyle.Bold);
-            if (article.article_font_type.Item4)
+            if (article.Is_italic)
                 articleTB.Font = new Font(articleTB.Font, FontStyle.Italic);
-            if (article.article_font_type.Item5)
+            if (article.Is_underline)
                 articleTB.Font = new Font(articleTB.Font, FontStyle.Underline);
-
-            
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            if (btnSave.Enabled)
-            {
-                if (MessageBox.Show("정말 글을 닫으시겠습니까?", "경고", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (std.Tokens == "null")
+            { 
+                if (btnSave.Enabled)
+                {
+                    if (MessageBox.Show("정말 글을 닫으시겠습니까?\n수정한 글은 저장되지않습니다", "경고", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        this.Close();
+                    }
+                }
+                else
                 {
                     this.Close();
                 }
+                ArticleViewMain articleViewMain = new ArticleViewMain(pro);
+                articleViewMain.Show();
             }
             else
             {
                 this.Close();
+                ArticleViewMain articleViewMain = new ArticleViewMain(std);
+                articleViewMain.Show();
             }
-            ArticleViewMain articleViewMain = new ArticleViewMain(std);
-            articleViewMain.Show();
         }
 
         //btnSave, tool들 전부 활성화
@@ -76,6 +116,7 @@ namespace WindowsFormsApp1
             btn기울임.Show();
             btn밑줄.Show();
 
+            titleTB.ReadOnly = false;
             articleTB.ReadOnly = false;
 
             //cmbFont,cmbSize 생성
@@ -102,7 +143,7 @@ namespace WindowsFormsApp1
                 // 해당 글 삭제
 
                 this.Close();
-                ArticleViewMain articleViewMain = new ArticleViewMain(std);
+                ArticleViewMain articleViewMain = new ArticleViewMain(pro);
                 articleViewMain.Show();
             }
         }
@@ -116,11 +157,31 @@ namespace WindowsFormsApp1
             btn기울임.Hide();
             btn밑줄.Hide();
             btnModify.Show();
+            titleTB.ReadOnly = true;
             articleTB.ReadOnly = true;
 
             selectedArticle.Content = articleTB.Text;
-            selectedArticle.article_font_type = (articleTB.Font.Name.ToString(),
-                (int)articleTB.Font.Size, articleTB.Font.Bold, articleTB.Font.Italic, articleTB.Font.Underline);
+            selectedArticle.Font_Size = (int)articleTB.Font.Size;
+            selectedArticle.Font_type = articleTB.Font.Name;
+            selectedArticle.Is_bold = articleTB.Font.Bold;
+            selectedArticle.Is_italic = articleTB.Font.Italic;
+            selectedArticle.Is_underline = articleTB.Font.Underline;
+            selectedArticle.Title = titleTB.Text;
+            //만약 이 글이 새로운 글일 때, id를 설정해줘야한다.
+            if (selectedArticle.ArticleID < 0)
+            {
+                //selectedArticle.ArticleID = ;
+                //selectedArticle.Date = System.DateTime.Now.ToString("yyyy-MM-dd");
+            }
+
+            //이 글이 기존의 있던 글일 때, id를 따로 설정해줄 필요가 없다.
+            else
+            {
+                selectedArticle.ArticleID = 1;
+                // db에서 selectedArticle에 해당하는 ID를 통해서 Article ID 를 비교해서 그 Article를 찾아내고,
+                // 그 article의 content,article_font_type,title을 바꿔줘야한다.
+
+            }
         }
 
         private void cmbSize_SelectedIndexChanged(object sender, EventArgs e)

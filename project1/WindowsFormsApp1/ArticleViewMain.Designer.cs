@@ -42,6 +42,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.lvwArticles = new System.Windows.Forms.ListView();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnWrite = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -186,6 +187,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.Control;
+            this.panel3.Controls.Add(this.btnWrite);
             this.panel3.Controls.Add(this.lvwArticles);
             this.panel3.Controls.Add(this.label2);
             this.panel3.Location = new System.Drawing.Point(12, 139);
@@ -214,6 +216,17 @@
             this.label2.Size = new System.Drawing.Size(128, 21);
             this.label2.TabIndex = 13;
             this.label2.Text = "강의 자료실";
+            // 
+            // btnWrite
+            // 
+            this.btnWrite.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnWrite.Location = new System.Drawing.Point(895, 16);
+            this.btnWrite.Name = "btnWrite";
+            this.btnWrite.Size = new System.Drawing.Size(60, 23);
+            this.btnWrite.TabIndex = 14;
+            this.btnWrite.Text = "글쓰기";
+            this.btnWrite.UseVisualStyleBackColor = true;
+            this.btnWrite.Click += new System.EventHandler(this.btnWrite_Click);
             // 
             // ArticleViewMain
             // 
@@ -254,5 +267,6 @@
         private System.Windows.Forms.ListView lvwArticles;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label department;
+        private System.Windows.Forms.Button btnWrite;
     }
 }

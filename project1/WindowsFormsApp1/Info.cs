@@ -213,20 +213,24 @@ namespace WindowsFormsApp1
 
     public class Article
     {
-        private int articleID; //모든 글들을 구별할 수 있게하는 ID, 글이 생긴 순서로 ID를 정하자.  ex) 첫번째 작성된글 ID = 1
+        private int articleID; //모든 글들을 구별할 수 있게하는 ID
         private string subjectname; //과목명
         private string title; //제목
         private string author; //작성자
         private string date; //날짜
         private int views; //조회수
         private string content; //글내용
-        public (string,int,bool,bool,bool) article_font_type; //(글꼴이름,글자크기,굵기유무,기울임유무,밑줄유무)
+        private string font_type; // 글꼴
+        private int font_size; // 글자 크기
+        private bool is_bold; // 굵기 유무
+        private bool is_italic; // 기울임 유무
+        private bool is_underline; // 언더바 유무
 
         public Article() {}
 
-        public Article(int articleID,string subjectname,
-            string title,string author,string date,int views, 
-            string content, (string,int,bool,bool,bool) article_font_type)
+        public Article(int articleID, string subjectname,
+            string title, string author, string date, int views,
+            string content, string font_type, int font_size, bool is_bold, bool is_italic, bool is_underline)
         {
             this.articleID = articleID;
             this.subjectname = subjectname;
@@ -235,7 +239,11 @@ namespace WindowsFormsApp1
             this.date = date;
             this.views = views;
             this.content = content;
-            this.article_font_type = article_font_type;
+            this.font_type = font_type;
+            this.font_size = font_size;
+            this.is_bold = is_bold;
+            this.is_italic = is_italic;
+            this.is_underline = is_underline;
         }
 
         public int ArticleID
@@ -278,6 +286,36 @@ namespace WindowsFormsApp1
         {
             get { return content; }
             set { content = value; }
+        }
+
+        public string Font_type
+        {
+            get { return font_type; }
+            set { font_type = value; }
+        }
+
+        public int Font_Size
+        {
+            get { return font_size; }
+            set { font_size = value; }
+        }
+
+        public bool Is_bold
+        {
+            get { return is_bold; }
+            set { is_bold = value; }
+        }
+
+        public bool Is_italic
+        {
+            get { return is_italic; }
+            set { is_italic = value; }
+        }
+
+        public bool Is_underline
+        {
+            get { return is_underline; }
+            set { is_underline = value; }
         }
     }
 }

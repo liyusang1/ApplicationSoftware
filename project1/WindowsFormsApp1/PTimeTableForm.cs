@@ -15,14 +15,14 @@ namespace WindowsFormsApp1
         loginForm login = new loginForm();
         Professor pro;
         private Point mousePoint;
-        public PTimeTableForm(Professor pro)
+        public PTimeTableForm(Professor pr)
         {
             InitializeComponent();
 
-            txtUser.Text = this.pro.Id + " " + this.pro.Name;
-            department.Text = this.pro.Department;
+            txtUser.Text = pr.Id + " " + pr.Name;
+            department.Text = pr.Department;
 
-            pro = new Professor(this.pro.Id, this.pro.Pw, this.pro.Name, this.pro.Tokens, this.pro.Department, this.pro.Subjects);
+            pro = new Professor(pr.Id, pr.Pw, pr.Name, pr.Tokens, pr.Department,pr.Subjects);
 
             /*
               교수 정보가 없어서 일단은 비워둠.
@@ -65,6 +65,13 @@ namespace WindowsFormsApp1
         private void cmbMenu_SelectedIndexChanged(object sender, EventArgs e)
         {
             // 교수용 강의자료실과 온라인강의실 추가 후 수정할 예정
+            if (cmbMenu.SelectedIndex == 1)
+            {
+                //강의자료실 폼으로 이동
+                ArticleViewMain articleViewMain = new ArticleViewMain(pro);
+                this.Hide();
+                articleViewMain.Show();
+            }
         }
     }
 }
