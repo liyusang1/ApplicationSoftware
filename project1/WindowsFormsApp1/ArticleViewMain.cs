@@ -62,17 +62,37 @@ namespace WindowsFormsApp1
             }
             cmbSubject.SelectedIndex = 0;
 
-            //글이 잘 들어왔다는 가정하에 실험하느라 임시로 넣음
-            // 글을 서버에서 가져와서 visible_article에 넣어주면 됨
-            string content = "안녕하세요\r\n반갑습니다.";
+            client = new RestClient("https://team.liyusang1.site/class-reference");
+            client.Timeout = -1;
+            request = new RestRequest(Method.GET);
+            request.AddHeader("x-access-token",st.Tokens);
+            response = client.Execute(request);
 
-            Article testarticle1 = new Article(1,"대학물리학","1장","김코딩","2021-03-01",1,content,"굴림",10,true,true,true);
-            List<Article> visible_articles = new List<Article>(10);
-            for(int count=0;count<10;count++)
-                visible_articles.Add(testarticle1);
-            //여기까지 임시
-            
-            std.VisibleArticles = visible_articles;
+            //받아온 데이터를 json형태로 묶음
+            jObject = JObject.Parse(response.Content);
+
+            int notificationCount = (int)jObject["count"]; //모든 글의 합
+
+            List<Article> visibleArticles = new List<Article>(notificationCount);
+            for (int j = 0; j < notificationCount; j++)
+            {
+                int articleID = (int)jObject["result"][j]["contentId"];
+                string subjectname = jObject["result"][j]["className"].ToString(); ;
+                string title = jObject["result"][j]["contentName"].ToString(); 
+                string author = jObject["result"][j]["ProfessorName"].ToString();
+                string date = jObject["result"][j]["createdAt"].ToString();
+                int views = (int)jObject["result"][j]["viewCount"];
+                string content = jObject["result"][j]["content"].ToString();
+                string font_type = jObject["result"][j]["fontType"].ToString();
+                int font_size = (int)jObject["result"][j]["fontSize"];
+                bool is_bold = (bool)jObject["result"][j]["isBold"];
+                bool is_italic = (bool)jObject["result"][j]["isItalic"];
+                bool is_underline = (bool)jObject["result"][j]["isUnderline"];
+                Article article = new Article(articleID, subjectname, title, author, date, views, content, font_type, font_size, is_bold, is_italic, is_underline);
+                visibleArticles.Add(article);
+            }
+
+            std.VisibleArticles = visibleArticles;
 
             //글번호
             int article_count = 0;
@@ -121,7 +141,6 @@ namespace WindowsFormsApp1
             request.AddHeader("x-access-token", pr.Tokens);
             IRestResponse response = client.Execute(request);
 
-
             var jObject = JObject.Parse(response.Content);
             int resultCode = (int)jObject["code"];
 
@@ -133,28 +152,41 @@ namespace WindowsFormsApp1
                 {
                     string className = jObject["result"][i]["className"].ToString();
                     cmbSubject.Items.Add(className);
-
-                    
                 }
             }
 
+            client = new RestClient("https://team.liyusang1.site/class-reference");
+            client.Timeout = -1;
+            request = new RestRequest(Method.GET);
+            request.AddHeader("x-access-token", pr.Tokens);
+            response = client.Execute(request);
+
+            //받아온 데이터를 json형태로 묶음
+            jObject = JObject.Parse(response.Content);
+
+            int notificationCount = (int)jObject["count"]; //모든 글의 합
+
+            int article1 = (int)jObject["result"][0]["contentId"];
+
+            Console.WriteLine(article1);
+
             cmbSubject.SelectedIndex = 0;
-            List<Article> visibleArticles = new List<Article>();
-            for (int j=0;j<2;j++)
+            List<Article> visibleArticles = new List<Article>(notificationCount);
+            for (int j=0;j< notificationCount; j++)
             {
-                int articleID = 1;
-                string subjectname = "대학물리학";
-                string title = "제목";
-                string author = "김물리";
-                string date = "2021-03-01";
-                int views = 1;
-                string content = "안녕하세요\n\r반갑습니다";
-                string font_type = "굴림";
-                int font_size = 12;
-                bool is_bold = true;
-                bool is_italic = false;
-                bool is_underline = false;
-                Article article = new Article(articleID,subjectname,title,author,date,views,content,font_type,font_size,is_bold,is_italic,is_underline);
+                int articleID = (int)jObject["result"][j]["contentId"];
+                string subjectname = jObject["result"][j]["className"].ToString(); ;
+                string title = jObject["result"][j]["contentName"].ToString();
+                string author = jObject["result"][j]["ProfessorName"].ToString();
+                string date = jObject["result"][j]["createdAt"].ToString();
+                int views = (int)jObject["result"][j]["viewCount"];
+                string content = jObject["result"][j]["content"].ToString();
+                string font_type = jObject["result"][j]["fontType"].ToString();
+                int font_size = (int)jObject["result"][j]["fontSize"];
+                bool is_bold = (bool)jObject["result"][j]["isBold"];
+                bool is_italic = (bool)jObject["result"][j]["isItalic"];
+                bool is_underline = (bool)jObject["result"][j]["isUnderline"];
+                Article article = new Article(articleID, subjectname, title, author, date, views, content, font_type, font_size, is_bold, is_italic, is_underline);
                 visibleArticles.Add(article);
             }
             
