@@ -172,6 +172,21 @@ namespace WindowsFormsApp1
             selectedArticle.Is_underline = articleTB.Font.Underline;
             selectedArticle.Font_type = articleTB.Font.Name;
 
+            int classId=0;
+
+            if (className.Equals("대학물리학"))
+                classId = 1;
+            else if (className.Equals("알고리즘"))
+                classId = 2;
+            else if (className.Equals("자료구조"))
+                classId = 3;
+            else if (className.Equals("객체지향프로그래밍"))
+                classId = 4;
+            else if (className.Equals("고급물리이론"))
+                classId = 5;
+            else if (className.Equals("운영체재"))
+                classId = 6;
+
             //만약 이 글이 새로운 글일 때, id를 설정해줘야한다.
             if (selectedArticle.ArticleID < 0)
             {
@@ -185,7 +200,7 @@ namespace WindowsFormsApp1
                 request.AddJsonBody(
                            new
                            {
-                               className = className,
+                               classId = classId,
                                contentName = selectedArticle.Title,
                                content = selectedArticle.Content,
                                fontSize = selectedArticle.Font_Size,
@@ -209,10 +224,29 @@ namespace WindowsFormsApp1
             //이 글이 기존의 있던 글일 때, id를 따로 설정해줄 필요가 없다.
             else
             {
-                selectedArticle.ArticleID = 1;
+                Console.WriteLine(selectedArticle.ArticleID);
+                var client = new RestClient("https://team.liyusang1.site/class-reference/"+ selectedArticle.ArticleID);
+                client.Timeout = -1;
+                var request = new RestRequest(Method.PATCH);
+                request.AddHeader("x-access-token", pro.Tokens);
+                request.AddHeader("Content-Type", "application/json");
+
+                //서버로 값을 보냄
+                request.AddJsonBody(
+                           new
+                           {
+                               contentName = selectedArticle.Title,
+                               content = selectedArticle.Content,
+                               fontSize = selectedArticle.Font_Size,
+                               isBold = selectedArticle.Is_bold,
+                               isItalic = selectedArticle.Is_italic,
+                               isUnderline = selectedArticle.Is_underline,
+                               fontType = selectedArticle.Font_type
+                           });
+
+                IRestResponse response = client.Execute(request);
                 // db에서 selectedArticle에 해당하는 ID를 통해서 Article ID 를 비교해서 그 Article를 찾아내고,
                 // 그 article의 content,article_font_type,title을 바꿔줘야한다.
-
             }
         }
 
