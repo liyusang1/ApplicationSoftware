@@ -42,6 +42,8 @@ namespace WindowsFormsApp1
             this.lvwLecture = new System.Windows.Forms.ListView();
             this.label2 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnUpload = new System.Windows.Forms.Button();
+            this.btnDel = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -141,6 +143,8 @@ namespace WindowsFormsApp1
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.Control;
+            this.panel2.Controls.Add(this.btnDel);
+            this.panel2.Controls.Add(this.btnUpload);
             this.panel2.Controls.Add(this.cmbSubject);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Location = new System.Drawing.Point(12, 93);
@@ -173,12 +177,14 @@ namespace WindowsFormsApp1
             // 
             // lvwLecture
             // 
+            this.lvwLecture.FullRowSelect = true;
             this.lvwLecture.HideSelection = false;
             this.lvwLecture.Location = new System.Drawing.Point(19, 48);
             this.lvwLecture.Name = "lvwLecture";
             this.lvwLecture.Size = new System.Drawing.Size(936, 389);
             this.lvwLecture.TabIndex = 0;
             this.lvwLecture.UseCompatibleStateImageBehavior = false;
+            this.lvwLecture.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lvwLecture_MouseDoubleClick);
             // 
             // label2
             // 
@@ -199,6 +205,26 @@ namespace WindowsFormsApp1
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(976, 449);
             this.panel3.TabIndex = 14;
+            // 
+            // btnUpload
+            // 
+            this.btnUpload.Location = new System.Drawing.Point(679, 8);
+            this.btnUpload.Name = "btnUpload";
+            this.btnUpload.Size = new System.Drawing.Size(165, 23);
+            this.btnUpload.TabIndex = 14;
+            this.btnUpload.Text = "강의 업로드";
+            this.btnUpload.UseVisualStyleBackColor = true;
+            this.btnUpload.Click += new System.EventHandler(this.btnUpload_Click);
+            // 
+            // btnDel
+            // 
+            this.btnDel.Location = new System.Drawing.Point(859, 8);
+            this.btnDel.Name = "btnDel";
+            this.btnDel.Size = new System.Drawing.Size(95, 22);
+            this.btnDel.TabIndex = 15;
+            this.btnDel.Text = "강의 삭제";
+            this.btnDel.UseVisualStyleBackColor = true;
+            this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
             // 
             // LectureViewForm
             // 
@@ -238,5 +264,7 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.ListView lvwLecture;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Button btnUpload;
+        private System.Windows.Forms.Button btnDel;
     }
 }

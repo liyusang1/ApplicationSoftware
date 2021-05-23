@@ -168,6 +168,12 @@ namespace WindowsFormsApp1
                 this.Hide();
                 articleViewMain.Show();
             }
+            else if(cmbMenu.SelectedIndex == 2)
+            {
+                LectureViewForm lecture = new LectureViewForm(pro);
+                this.Hide();
+                lecture.Show();
+            }
         }
     }
 }

@@ -14,12 +14,14 @@ namespace WindowsFormsApp1
 {
     public partial class LectureViewForm : Form
     {
-        Student std;
+        Student std = new Student("null");
+        Professor pro = new Professor("null");
         public LectureViewForm(Student st)
         {
             InitializeComponent();
-
-            std = new Student(st.Id, st.Pw, st.Name, st.Tokens, st.Department, st.Friends, st.Subjects, st.Scores);
+            btnUpload.Hide();
+            btnDel.Hide();
+            std = st;
             txtUser.Text = st.Id + " " + st.Name;
             string[] menu = { "시간표", "강의자료실", "온라인강의보기" };
             cmbMenu.Items.AddRange(menu);
@@ -66,6 +68,56 @@ namespace WindowsFormsApp1
             cmbSubject.SelectedIndex = 0;
         }
 
+        public LectureViewForm(Professor prof)
+        {
+            InitializeComponent();
+
+            pro = prof;
+            txtUser.Text = prof.Id + " " + prof.Name;
+            string[] menu = { "시간표", "강의자료실", "온라인강의보기" };
+            cmbMenu.Items.AddRange(menu);
+            cmbMenu.SelectedIndex = 2;
+
+            lvwLecture.View = View.Details;
+
+            lvwLecture.Columns.Add("주차");
+            lvwLecture.Columns.Add("학습단원");
+            lvwLecture.Columns.Add("구분");
+            lvwLecture.Columns.Add("학습목차");
+            lvwLecture.Columns.Add("인정시간");
+            lvwLecture.Columns.Add("URL");
+            //lvwLecture.Columns.Add("달성시간");
+
+            lvwLecture.Columns[0].Width = 100;
+            lvwLecture.Columns[1].Width = 210;
+            lvwLecture.Columns[2].Width = 100;
+            lvwLecture.Columns[3].Width = 180;
+            lvwLecture.Columns[4].Width = 120;
+            lvwLecture.Columns[5].Width = 110;
+            //lvwLecture.Columns[6].Width = 110;
+
+            var client = new RestClient("https://team.liyusang1.site/schedule");
+            client.Timeout = -1;
+            var request = new RestRequest(Method.GET);
+            request.AddHeader("x-access-token", prof.Tokens);
+            IRestResponse response = client.Execute(request);
+
+
+            var jObject = JObject.Parse(response.Content);
+            int resultCode = (int)jObject["code"];
+
+            if (resultCode == 200)
+            {
+                int scheduleCount = (int)jObject["count"]; //이 학생이 수강하고 있는 과목 수
+
+                for (int i = 0; i < scheduleCount; i++)
+                {
+                    string className = jObject["result"][i]["className"].ToString();
+                    cmbSubject.Items.Add(className);
+                }
+            }
+            cmbSubject.SelectedIndex = 0;
+        }
         private void btnExit_Click(object sender, EventArgs e)
         {
             loginForm login = new loginForm();
@@ -85,23 +137,81 @@ namespace WindowsFormsApp1
         {
             if (cmbMenu.SelectedIndex == 0)
             {
-                //시간표 폼으로 이동
-                TimeTableForm timeTable = new TimeTableForm(std);
-                this.Hide();
-                timeTable.Show();
+                // 학생일 때
+                if (pro.Tokens == "null")
+                {
+                    //시간표 폼으로 이동
+                    TimeTableForm timeTable = new TimeTableForm(std);
+                    this.Hide();
+                    timeTable.Show();
+                }
+                // 교수일 때
+                else
+                {
+                    //시간표 폼으로 이동
+                    PTimeTableForm timeTable = new PTimeTableForm(pro);
+                    this.Hide();
+                    timeTable.Show();
+                }
             }
             else if (cmbMenu.SelectedIndex == 1)
             {
-                //강의자료실 폼을 이동
-                ArticleViewMain articleView = new ArticleViewMain(std);
-                this.Hide();
-                articleView.Show();
+                // 학생일 때
+                if (pro.Tokens == "null")
+                {
+                    //강의자료실 폼을 이동
+                    ArticleViewMain articleView = new ArticleViewMain(std);
+                    this.Hide();
+                    articleView.Show();
+                }
+
+                // 교수일 때
+                else
+                {
+                    //강의자료실 폼을 이동
+                    ArticleViewMain articleView = new ArticleViewMain(pro);
+                    this.Hide();
+                    articleView.Show();
+                }
             }
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void btnUpload_Click(object sender, EventArgs e)
+        {
+            UploadForm upload = new UploadForm(this);
+            upload.Show();
+        }
+
+        public void addLecture(string week, string chap, string dist, string cont, int time, string url)
+        {
+            string[] row = { week, chap, dist, cont, time.ToString() + "분", url };
+            var listrow = new ListViewItem(row);
+            lvwLecture.Items.Add(listrow); //추가한 강의에 대한 정보를 서버로 옮겨야함. 옮긴 후에는 계속해서 학생과 교수 모두 정보를 볼 수 있도록 함.
+        }
+
+        private void btnDel_Click(object sender, EventArgs e)
+        {
+            int count = lvwLecture.SelectedItems.Count;
+            for(int i = count - 1; i >= 0; i--)
+            {
+                lvwLecture.Items.Remove(lvwLecture.SelectedItems[i]);
+            }
+        }
+
+        private void lvwLecture_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if(lvwLecture.SelectedItems.Count == 1)
+            {
+                ListView.SelectedListViewItemCollection items = lvwLecture.SelectedItems;
+                ListViewItem lvItem = items[0];
+                string url = lvItem.SubItems[5].Text;
+                System.Diagnostics.Process.Start(url);
+            }
         }
     }
 }

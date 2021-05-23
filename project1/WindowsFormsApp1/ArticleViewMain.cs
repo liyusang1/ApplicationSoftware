@@ -60,7 +60,7 @@ namespace WindowsFormsApp1
                     cmbSubject.Items.Add(className);
                 }
             }
-            cmbSubject.SelectedIndex = 0;
+            //cmbSubject.SelectedIndex = 0;
 
             client = new RestClient("https://team.liyusang1.site/class-reference");
             client.Timeout = -1;
@@ -267,12 +267,12 @@ namespace WindowsFormsApp1
                 // 교수일 때
                 else
                 {
-                    /*
+                    
                     //온라인강의보기 폼을 이동
                     LectureViewForm lectureView = new LectureViewForm(pro);
                     this.Hide();
                     lectureView.Show();
-                    */
+                    
                 }
             }
         }
