@@ -37,13 +37,13 @@ namespace WindowsFormsApp1
             this.btnExit = new System.Windows.Forms.Button();
             this.lblKwang = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnDel = new System.Windows.Forms.Button();
+            this.btnUpload = new System.Windows.Forms.Button();
             this.cmbSubject = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lvwLecture = new System.Windows.Forms.ListView();
             this.label2 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.btnUpload = new System.Windows.Forms.Button();
-            this.btnDel = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -153,6 +153,26 @@ namespace WindowsFormsApp1
             this.panel2.TabIndex = 12;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
+            // btnDel
+            // 
+            this.btnDel.Location = new System.Drawing.Point(859, 8);
+            this.btnDel.Name = "btnDel";
+            this.btnDel.Size = new System.Drawing.Size(95, 22);
+            this.btnDel.TabIndex = 15;
+            this.btnDel.Text = "강의 삭제";
+            this.btnDel.UseVisualStyleBackColor = true;
+            this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
+            // 
+            // btnUpload
+            // 
+            this.btnUpload.Location = new System.Drawing.Point(679, 8);
+            this.btnUpload.Name = "btnUpload";
+            this.btnUpload.Size = new System.Drawing.Size(165, 23);
+            this.btnUpload.TabIndex = 14;
+            this.btnUpload.Text = "강의 업로드";
+            this.btnUpload.UseVisualStyleBackColor = true;
+            this.btnUpload.Click += new System.EventHandler(this.btnUpload_Click);
+            // 
             // cmbSubject
             // 
             this.cmbSubject.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -165,6 +185,7 @@ namespace WindowsFormsApp1
             this.cmbSubject.Name = "cmbSubject";
             this.cmbSubject.Size = new System.Drawing.Size(150, 24);
             this.cmbSubject.TabIndex = 13;
+            this.cmbSubject.SelectedIndexChanged += new System.EventHandler(this.cmbSubject_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -205,26 +226,6 @@ namespace WindowsFormsApp1
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(976, 449);
             this.panel3.TabIndex = 14;
-            // 
-            // btnUpload
-            // 
-            this.btnUpload.Location = new System.Drawing.Point(679, 8);
-            this.btnUpload.Name = "btnUpload";
-            this.btnUpload.Size = new System.Drawing.Size(165, 23);
-            this.btnUpload.TabIndex = 14;
-            this.btnUpload.Text = "강의 업로드";
-            this.btnUpload.UseVisualStyleBackColor = true;
-            this.btnUpload.Click += new System.EventHandler(this.btnUpload_Click);
-            // 
-            // btnDel
-            // 
-            this.btnDel.Location = new System.Drawing.Point(859, 8);
-            this.btnDel.Name = "btnDel";
-            this.btnDel.Size = new System.Drawing.Size(95, 22);
-            this.btnDel.TabIndex = 15;
-            this.btnDel.Text = "강의 삭제";
-            this.btnDel.UseVisualStyleBackColor = true;
-            this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
             // 
             // LectureViewForm
             // 

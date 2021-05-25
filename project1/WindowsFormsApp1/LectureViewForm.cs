@@ -35,7 +35,7 @@ namespace WindowsFormsApp1
             lvwLecture.Columns.Add("학습목차");
             lvwLecture.Columns.Add("인정시간");
             lvwLecture.Columns.Add("학습하기");
-            lvwLecture.Columns.Add("달성시간");
+            //lvwLecture.Columns.Add("달성시간");
 
             lvwLecture.Columns[0].Width = 100;
             lvwLecture.Columns[1].Width = 210;
@@ -43,7 +43,7 @@ namespace WindowsFormsApp1
             lvwLecture.Columns[3].Width = 180;
             lvwLecture.Columns[4].Width = 120;
             lvwLecture.Columns[5].Width = 110;
-            lvwLecture.Columns[6].Width = 110;
+            //lvwLecture.Columns[6].Width = 110;
 
             var client = new RestClient("https://team.liyusang1.site/schedule");
             client.Timeout = -1;
@@ -190,6 +190,7 @@ namespace WindowsFormsApp1
         public void addLecture(string week, string chap, string dist, string cont, int time, string url)
         {
             string[] row = { week, chap, dist, cont, time.ToString() + "분", url };
+            string[] severupload = { cmbSubject.SelectedItem.ToString(), week, chap, dist, cont, time.ToString() + "분", url }; // 서버에 저장
             var listrow = new ListViewItem(row);
             lvwLecture.Items.Add(listrow); //추가한 강의에 대한 정보를 서버로 옮겨야함. 옮긴 후에는 계속해서 학생과 교수 모두 정보를 볼 수 있도록 함.
         }
@@ -211,6 +212,25 @@ namespace WindowsFormsApp1
                 ListViewItem lvItem = items[0];
                 string url = lvItem.SubItems[5].Text;
                 System.Diagnostics.Process.Start(url);
+            }
+        }
+
+        private void cmbSubject_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            lvwLecture.Items.Clear();
+
+            int lecturecount = 3; // 강의 수
+
+            string[] GetLecture = { "대학물리학", "1", "Introduction", "강의영상", "알고리즘 강의소개", "30분", "www.naver.com" }; // 서버에서 받아올 정보
+            string[] lectureInfo = { "1", "Introduction", "강의영상", "알고리즘 강의소개", "30분", "www.naver.com" };
+            if (cmbSubject.SelectedItem.ToString().Equals(GetLecture[0]))
+            {
+                for (int i = 0; i < lecturecount; i++) // 강의 수 만큼 반복
+                {
+                    ListViewItem item = new ListViewItem(lectureInfo);
+                    lvwLecture.Items.Add(item);
+                }
+
             }
         }
     }
