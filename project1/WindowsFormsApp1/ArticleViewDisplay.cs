@@ -145,6 +145,12 @@ namespace WindowsFormsApp1
             {
                 // 해당 글 삭제
 
+                var client = new RestClient("https://team.liyusang1.site/class-reference/" + selectedArticle.ArticleID);
+                client.Timeout = -1;
+                var request = new RestRequest(Method.DELETE);
+                request.AddHeader("x-access-token", pro.Tokens);
+                IRestResponse response = client.Execute(request);
+
                 this.Close();
                 ArticleViewMain articleViewMain = new ArticleViewMain(pro);
                 articleViewMain.Show();
