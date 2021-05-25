@@ -9,6 +9,19 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using RestSharp;
 using Newtonsoft.Json.Linq;
+using RestSharp; //RestSharp 라이브러리를 사용 예정
+using Newtonsoft.Json;  //Newtonsoft 라이브러리 사용예정
+using Newtonsoft.Json.Linq;
+
+//testId 
+//id : 2021
+//password :test123
+
+//test 교수 아이디
+//id : 0000 password:test123 (김물리)
+
+//test 교수 아이디
+//id : 0001 password:test123 (김코딩)
 
 namespace WindowsFormsApp1
 {
@@ -190,7 +203,41 @@ namespace WindowsFormsApp1
         public void addLecture(string week, string chap, string dist, string cont, int time, string url)
         {
             string[] row = { week, chap, dist, cont, time.ToString() + "분", url };
-            string[] severupload = { cmbSubject.SelectedItem.ToString(), week, chap, dist, cont, time.ToString() + "분", url }; // 서버에 저장
+
+            int classId=0;
+            if (cmbSubject.SelectedItem.Equals("대학물리학"))
+                classId = 1;
+            else if (cmbSubject.SelectedItem.Equals("알고리즘"))
+                classId = 2;
+            else if (cmbSubject.SelectedItem.Equals("자료구조"))
+                classId = 3;
+            else if (cmbSubject.SelectedItem.Equals("객체지향프로그래밍"))
+                classId = 4;
+            else if (cmbSubject.SelectedItem.Equals("고급물리이론"))
+                classId = 5;
+            else if (cmbSubject.SelectedItem.Equals("운영체재"))
+                classId = 6;
+
+            var client = new RestClient("https://team.liyusang1.site/class-room");
+            client.Timeout = -1;
+            var request = new RestRequest(Method.POST);
+            request.AddHeader("x-access-token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAwMDAiLCJpZGVudGlmaWNhdGlvbiI6MSwiaWF0IjoxNjIxNjc1ODUwLCJleHAiOjE2NTMyMTE4NTAsInN1YiI6InVzZXJJbmZvIn0.KTlV2XFRntXILx8SlgBEMNe_nGc62WBDFDQRCnCx4mo");
+            request.AddHeader("Content-Type", "application/json");
+            request.AddJsonBody(
+                       new
+                       {
+                           classId=classId,
+                           classWeek=week,
+                           classChapter=chap,
+                           classDistinct=dist,
+                           classTime=time,
+                           classContext=cont,
+                           classUrl=url
+                       });
+
+            IRestResponse response = client.Execute(request);
+  
+
             var listrow = new ListViewItem(row);
             lvwLecture.Items.Add(listrow); //추가한 강의에 대한 정보를 서버로 옮겨야함. 옮긴 후에는 계속해서 학생과 교수 모두 정보를 볼 수 있도록 함.
         }
