@@ -27,6 +27,7 @@ namespace WindowsFormsApp1
         private void button1_Click(object sender, EventArgs e)
         {
             lecture.addLecture(txtWeek.Text, txtChap.Text, txtDist.Text, txtCon.Text, Int32.Parse(txtTime.Text), txtURL.Text);
+            //주차 학습단원 구분 학습목차 인정시간 url
         }
 
         private void button2_Click(object sender, EventArgs e)

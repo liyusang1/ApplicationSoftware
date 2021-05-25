@@ -33,6 +33,11 @@ namespace WindowsFormsApp1
             btnModify.Hide();
             btnDelete.Hide();
 
+            //조회수 증가
+            var client = new RestClient("https://team.liyusang1.site/class-reference/view/" + selectedArticle.ArticleID);
+            client.Timeout = -1;
+            var request = new RestRequest(Method.PATCH);
+            IRestResponse response = client.Execute(request);
 
             if (selectedArticle.Content == null)
                 return;
@@ -64,6 +69,7 @@ namespace WindowsFormsApp1
             btn기울임.Hide();
             btn밑줄.Hide();
 
+            //조회수 증가
             var client = new RestClient("https://team.liyusang1.site/class-reference/view/"+selectedArticle.ArticleID);
             client.Timeout = -1;
             var request = new RestRequest(Method.PATCH);
@@ -223,13 +229,6 @@ namespace WindowsFormsApp1
 
                 IRestResponse response = client.Execute(request);
 
-                //받아온 데이터를 json형태로 묶음
-                //var jObject = JObject.Parse(response.Content);
-
-                //code 를 resultCode에 저장
-                //int resultCode = (int)jObject["code"];
-                //selectedArticle.ArticleID = ;
-                //selectedArticle.Date = System.DateTime.Now.ToString("yyyy-MM-dd");
             }
 
             //이 글이 기존의 있던 글일 때, id를 따로 설정해줄 필요가 없다.

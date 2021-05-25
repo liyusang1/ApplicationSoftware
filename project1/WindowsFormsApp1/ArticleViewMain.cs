@@ -46,7 +46,6 @@ namespace WindowsFormsApp1
             request.AddHeader("x-access-token", st.Tokens);
             IRestResponse response = client.Execute(request);
 
-
             var jObject = JObject.Parse(response.Content);
             int resultCode = (int)jObject["code"];
 
@@ -60,7 +59,7 @@ namespace WindowsFormsApp1
                     cmbSubject.Items.Add(className);
                 }
             }
-            //cmbSubject.SelectedIndex = 0;
+            cmbSubject.SelectedIndex = 0;
 
             client = new RestClient("https://team.liyusang1.site/class-reference");
             client.Timeout = -1;
@@ -98,6 +97,12 @@ namespace WindowsFormsApp1
             int article_count = 0;
 
             lvwArticles.Items.Clear();
+
+            if(notificationCount == 0)
+            {
+                return;
+            }
+
             foreach (var element in std.VisibleArticles) {
                 if (cmbSubject.SelectedItem.ToString() == element.SubjectName)
                 {
@@ -107,7 +112,6 @@ namespace WindowsFormsApp1
                     lvwArticles.Items.Add(newitem);
                 }
             }
-
             //역순으로 정렬하는 거 구현해야함
         }
 
