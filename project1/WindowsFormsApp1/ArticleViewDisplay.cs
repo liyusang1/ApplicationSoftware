@@ -64,6 +64,10 @@ namespace WindowsFormsApp1
             btn기울임.Hide();
             btn밑줄.Hide();
 
+            var client = new RestClient("https://team.liyusang1.site/class-reference/view/"+selectedArticle.ArticleID);
+            client.Timeout = -1;
+            var request = new RestRequest(Method.PATCH);
+            IRestResponse response = client.Execute(request);
 
             if (selectedArticle.Content == null)
                 return;
@@ -150,6 +154,7 @@ namespace WindowsFormsApp1
                 var request = new RestRequest(Method.DELETE);
                 request.AddHeader("x-access-token", pro.Tokens);
                 IRestResponse response = client.Execute(request);
+
 
                 this.Close();
                 ArticleViewMain articleViewMain = new ArticleViewMain(pro);
