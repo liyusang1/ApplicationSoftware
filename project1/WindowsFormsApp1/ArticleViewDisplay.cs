@@ -19,6 +19,7 @@ namespace WindowsFormsApp1
         Article selectedArticle;
         Student std = new Student("null");
         Professor pro = new Professor("null");
+
         public ArticleViewDisplay(Article article, Student st)
         {
             selectedArticle = article;
@@ -40,6 +41,9 @@ namespace WindowsFormsApp1
             client.Timeout = -1;
             var request = new RestRequest(Method.PATCH);
             IRestResponse response = client.Execute(request);
+
+            if (selectedArticle.FIle_Bytes != null)
+                txtFileName.Text = selectedArticle.File_name;
 
             if (selectedArticle.Content == null)
                 return;
@@ -229,6 +233,8 @@ namespace WindowsFormsApp1
                                isItalic = selectedArticle.Is_italic,
                                isUnderline = selectedArticle.Is_underline,
                                fontType = selectedArticle.Font_type
+                               //fileName = selectedArticle.File_name
+                               //fileBytes = selectedArticle.File_Bytes
                            });
 
                 IRestResponse response = client.Execute(request);
@@ -256,6 +262,8 @@ namespace WindowsFormsApp1
                                isItalic = selectedArticle.Is_italic,
                                isUnderline = selectedArticle.Is_underline,
                                fontType = selectedArticle.Font_type
+                               //fileName = selectedArticle.File_name
+                               //fileBytes = selectedArticle.File_Bytes
                            });
 
                 IRestResponse response = client.Execute(request);
@@ -263,7 +271,7 @@ namespace WindowsFormsApp1
                 // 그 article의 content,article_font_type,title을 바꿔줘야한다.
             }
         }
-
+       
         private void cmbSize_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbSize.SelectedIndex != -1)
@@ -293,8 +301,56 @@ namespace WindowsFormsApp1
 
         private void btnFileUpload_Click(object sender, EventArgs e)
         {
-            ofd.InitialDirectory = "c:\\";
-            ofd.Filter = "txt files (*.txt)|*.txt|pdf files (*.pdf)|*.pdf|All files (*.*)|*.*";
+            ofd.InitialDirectory = "C:\\";
+            ofd.Filter = "All files (*.*)|*.*";
+            ofd.FilterIndex = 1;
+            ofd.RestoreDirectory = true;
+
+            var filePath = string.Empty;
+            byte[] fileBytes=new byte[0];
+
+            if(ofd.ShowDialog() == DialogResult.OK)
+            {
+                filePath = ofd.FileName;
+                fileBytes = GetFileByte(filePath);
+                Console.WriteLine(fileBytes.ToString());
+                txtFileName.Text = Path.GetFileName(filePath);
+                selectedArticle.File_name = Path.GetFileName(filePath);
+                selectedArticle.FIle_Bytes = fileBytes;
+            }
+        }
+
+        private byte[] GetFileByte(string filePath)
+        {
+            FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read);
+            BinaryReader br = new BinaryReader(fs);
+
+            byte[] fileBytes = br.ReadBytes((int)fs.Length);
+            br.Close();
+            fs.Close();
+
+            return fileBytes;
+        }
+
+        private void txtFileName_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (selectedArticle.File_name==null)
+                return;
+
+            if (MessageBox.Show(selectedArticle.File_name + " 파일을 다운로드 하시겠습니까?","Inform",MessageBoxButtons.OKCancel)!=DialogResult.OK)
+                return;
+
+            string filePath = "";
+            string fileDir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+            filePath = fileDir + "\\"+ selectedArticle.File_name;
+            byte[] outByte = selectedArticle.FIle_Bytes;
+
+            FileStream fs = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.Write);
+            fs.Write(outByte, 0, outByte.GetUpperBound(0));
+            fs.Close();
+
+            MessageBox.Show(selectedArticle.File_name + " 파일이 내 문서에 다운로드하였습니다.", "Inform",MessageBoxButtons.OK);
         }
     }
 }

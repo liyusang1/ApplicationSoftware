@@ -87,7 +87,9 @@ namespace WindowsFormsApp1
                 bool is_bold = (bool)jObject["result"][j]["isBold"];
                 bool is_italic = (bool)jObject["result"][j]["isItalic"];
                 bool is_underline = (bool)jObject["result"][j]["isUnderline"];
-                Article article = new Article(articleID, subjectname, title, author, date, views, content, font_type, font_size, is_bold, is_italic, is_underline);
+                byte[] file_bytes = new byte[0];
+                string file_name = null;
+                Article article = new Article(articleID, subjectname, title, author, date, views, content, font_type, font_size, is_bold, is_italic, is_underline, file_bytes, file_name);
                 visibleArticles.Add(article);
             }
 
@@ -186,20 +188,11 @@ namespace WindowsFormsApp1
                 bool is_bold = (bool)jObject["result"][j]["isBold"];
                 bool is_italic = (bool)jObject["result"][j]["isItalic"];
                 bool is_underline = (bool)jObject["result"][j]["isUnderline"];
-                Article article = new Article(articleID, subjectname, title, author, date, views, content, font_type, font_size, is_bold, is_italic, is_underline);
+                byte[] file_bytes = new byte[0];
+                string file_name = null;
+                Article article = new Article(articleID, subjectname, title, author, date, views, content, font_type, font_size, is_bold, is_italic, is_underline, file_bytes, file_name);
                 visibleArticles.Add(article);
             }
-            
-            /*
-            //글이 잘 들어왔다는 가정하에 실험하느라 임시로 넣음
-            // 글을 서버에서 가져와서 visible_article에 넣어주면 됨
-            string content = "안녕하세요\r\n반갑습니다.";
-            Article testarticle1 = new Article(1, "대학물리학", "1장", "김코딩", "2021-03-01", 1, content, "굴림", 10, true, true, true);
-            List<Article> visible_articles = new List<Article>(10);
-            for (int count = 0; count < 10; count++)
-                visible_articles.Add(testarticle1);
-            //여기까지 임시
-            */
 
             std.VisibleArticles = visibleArticles;
 

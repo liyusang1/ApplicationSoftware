@@ -225,12 +225,15 @@ namespace WindowsFormsApp1
         private bool is_bold; // 굵기 유무
         private bool is_italic; // 기울임 유무
         private bool is_underline; // 언더바 유무
+        private byte[] file_bytes; // BLOB 형식의 파일
+        private string file_name; //파일이름 ex) 제안서.txt
 
         public Article() {}
 
         public Article(int articleID, string subjectname,
             string title, string author, string date, int views,
-            string content, string font_type, int font_size, bool is_bold, bool is_italic, bool is_underline)
+            string content, string font_type, int font_size, bool is_bold,
+            bool is_italic, bool is_underline, byte[] file_bytes,string file_name)
         {
             this.articleID = articleID;
             this.subjectname = subjectname;
@@ -244,6 +247,8 @@ namespace WindowsFormsApp1
             this.is_bold = is_bold;
             this.is_italic = is_italic;
             this.is_underline = is_underline;
+            this.file_bytes = file_bytes;
+            this.file_name = file_name;
         }
 
         public int ArticleID
@@ -316,6 +321,18 @@ namespace WindowsFormsApp1
         {
             get { return is_underline; }
             set { is_underline = value; }
+        }
+
+        public byte[] FIle_Bytes
+        {
+            get { return file_bytes; }
+            set { file_bytes = value; }
+        }
+
+        public string File_name
+        {
+            get { return file_name; }
+            set { file_name = value; }
         }
     }
 }

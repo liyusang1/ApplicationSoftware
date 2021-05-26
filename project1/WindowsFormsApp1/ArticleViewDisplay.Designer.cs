@@ -180,6 +180,7 @@
             this.txtFileName.Size = new System.Drawing.Size(257, 26);
             this.txtFileName.TabIndex = 29;
             this.txtFileName.Text = "(파일 없음)";
+            this.txtFileName.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.txtFileName_MouseDoubleClick);
             // 
             // ofd
             // 
