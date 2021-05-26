@@ -39,6 +39,9 @@
             this.cmbFont = new System.Windows.Forms.ComboBox();
             this.cmbSize = new System.Windows.Forms.ComboBox();
             this.btnSave = new System.Windows.Forms.Button();
+            this.btnFileUpload = new System.Windows.Forms.Button();
+            this.txtFileName = new System.Windows.Forms.TextBox();
+            this.ofd = new System.Windows.Forms.OpenFileDialog();
             this.SuspendLayout();
             // 
             // articleTB
@@ -157,12 +160,39 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // btnFileUpload
+            // 
+            this.btnFileUpload.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFileUpload.Location = new System.Drawing.Point(562, 64);
+            this.btnFileUpload.Name = "btnFileUpload";
+            this.btnFileUpload.Size = new System.Drawing.Size(126, 26);
+            this.btnFileUpload.TabIndex = 28;
+            this.btnFileUpload.Text = "파일올리기";
+            this.btnFileUpload.UseVisualStyleBackColor = true;
+            this.btnFileUpload.Click += new System.EventHandler(this.btnFileUpload_Click);
+            // 
+            // txtFileName
+            // 
+            this.txtFileName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFileName.Location = new System.Drawing.Point(299, 64);
+            this.txtFileName.Name = "txtFileName";
+            this.txtFileName.ReadOnly = true;
+            this.txtFileName.Size = new System.Drawing.Size(257, 26);
+            this.txtFileName.TabIndex = 29;
+            this.txtFileName.Text = "(파일 없음)";
+            // 
+            // ofd
+            // 
+            this.ofd.FileName = "openFileDialog1";
+            // 
             // ArticleViewDisplay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PeachPuff;
             this.ClientSize = new System.Drawing.Size(700, 600);
+            this.Controls.Add(this.txtFileName);
+            this.Controls.Add(this.btnFileUpload);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.cmbSize);
             this.Controls.Add(this.cmbFont);
@@ -178,7 +208,6 @@
             this.Name = "ArticleViewDisplay";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ArticleViewDisplay";
-            this.Load += new System.EventHandler(this.ArticleViewDisplay_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -197,5 +226,8 @@
         private System.Windows.Forms.ComboBox cmbFont;
         private System.Windows.Forms.ComboBox cmbSize;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnFileUpload;
+        private System.Windows.Forms.TextBox txtFileName;
+        private System.Windows.Forms.OpenFileDialog ofd;
     }
 }

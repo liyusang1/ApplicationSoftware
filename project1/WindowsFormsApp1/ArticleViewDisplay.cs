@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using RestSharp; //RestSharp 라이브러리를 사용 예정
 using Newtonsoft.Json;  //Newtonsoft 라이브러리 사용예정
 using Newtonsoft.Json.Linq;
+using System.IO;
 
 namespace WindowsFormsApp1
 {
@@ -32,6 +33,7 @@ namespace WindowsFormsApp1
             btn밑줄.Hide();
             btnModify.Hide();
             btnDelete.Hide();
+            btnFileUpload.Hide();
 
             //조회수 증가
             var client = new RestClient("https://team.liyusang1.site/class-reference/view/" + selectedArticle.ArticleID);
@@ -68,6 +70,7 @@ namespace WindowsFormsApp1
             btn굵게.Hide();
             btn기울임.Hide();
             btn밑줄.Hide();
+            btnFileUpload.Hide();
 
             //조회수 증가
             var client = new RestClient("https://team.liyusang1.site/class-reference/view/"+selectedArticle.ArticleID);
@@ -128,6 +131,7 @@ namespace WindowsFormsApp1
             btn굵게.Show();
             btn기울임.Show();
             btn밑줄.Show();
+            btnFileUpload.Show();
 
             titleTB.ReadOnly = false;
             articleTB.ReadOnly = false;
@@ -287,9 +291,10 @@ namespace WindowsFormsApp1
             articleTB.Font = new Font(Font.FontFamily, articleTB.Font.Size, articleTB.Font.Style ^ FontStyle.Underline);
         }
 
-        private void ArticleViewDisplay_Load(object sender, EventArgs e)
+        private void btnFileUpload_Click(object sender, EventArgs e)
         {
-
+            ofd.InitialDirectory = "c:\\";
+            ofd.Filter = "txt files (*.txt)|*.txt|pdf files (*.pdf)|*.pdf|All files (*.*)|*.*";
         }
     }
 }
