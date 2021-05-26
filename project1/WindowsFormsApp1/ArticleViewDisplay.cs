@@ -232,13 +232,13 @@ namespace WindowsFormsApp1
                                isBold = selectedArticle.Is_bold,
                                isItalic = selectedArticle.Is_italic,
                                isUnderline = selectedArticle.Is_underline,
-                               fontType = selectedArticle.Font_type
-                               //fileName = selectedArticle.File_name
-                               //fileBytes = selectedArticle.File_Bytes
+                               fontType = selectedArticle.Font_type,
+                               fileName = selectedArticle.File_name,
+                               file = Convert.ToBase64String(selectedArticle.FIle_Bytes)
                            });
 
                 IRestResponse response = client.Execute(request);
-
+                Console.WriteLine(Convert.ToBase64String(selectedArticle.FIle_Bytes));
             }
 
             //이 글이 기존의 있던 글일 때, id를 따로 설정해줄 필요가 없다.
@@ -261,17 +261,19 @@ namespace WindowsFormsApp1
                                isBold = selectedArticle.Is_bold,
                                isItalic = selectedArticle.Is_italic,
                                isUnderline = selectedArticle.Is_underline,
-                               fontType = selectedArticle.Font_type
-                               //fileName = selectedArticle.File_name
-                               //fileBytes = selectedArticle.File_Bytes
+                               fontType = selectedArticle.Font_type,
+                               fileName = selectedArticle.File_name,
+                               file = Convert.ToBase64String(selectedArticle.FIle_Bytes)
                            });
 
                 IRestResponse response = client.Execute(request);
                 // db에서 selectedArticle에 해당하는 ID를 통해서 Article ID 를 비교해서 그 Article를 찾아내고,
                 // 그 article의 content,article_font_type,title을 바꿔줘야한다.
+                Console.WriteLine(Convert.ToBase64String(selectedArticle.FIle_Bytes));
             }
         }
        
+
         private void cmbSize_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbSize.SelectedIndex != -1)
