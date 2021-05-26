@@ -23,7 +23,7 @@ namespace WindowsFormsApp1
             std = st;
             department.Text = st.Department;
             txtUser.Text = st.Id + " " + st.Name;
-            string[] menu = { "시간표", "강의자료실", "온라인강의보기" };
+            string[] menu = { "시간표", "강의자료실", "온라인강의보기", "성적관리" };
             cmbMenu.Items.AddRange(menu);
             cmbMenu.SelectedIndex = 1;
 
@@ -121,7 +121,7 @@ namespace WindowsFormsApp1
             pro = pr;
             department.Text = pr.Department;
             txtUser.Text = pr.Id + " " + pr.Name;
-            string[] menu = { "시간표", "강의자료실", "온라인강의보기" };
+            string[] menu = { "시간표", "강의자료실", "온라인강의보기", "성적관리" };
             cmbMenu.Items.AddRange(menu);
             cmbMenu.SelectedIndex = 1;
 
@@ -270,13 +270,28 @@ namespace WindowsFormsApp1
 
                 // 교수일 때
                 else
-                {
-                    
+                {        
                     //온라인강의보기 폼을 이동
                     LectureViewForm lectureView = new LectureViewForm(pro);
                     this.Hide();
-                    lectureView.Show();
-                    
+                    lectureView.Show();                    
+                }
+            }
+            else if (cmbMenu.SelectedIndex == 3)
+            {
+                if (pro.Tokens == "null")
+                {
+                    GradeForm grade = new GradeForm(std);
+                    this.Hide();
+                    grade.Show();
+                }
+
+                // 교수일 때
+                else
+                {
+                    GradeForm grade = new GradeForm(std);
+                    this.Hide();
+                    grade.Show();
                 }
             }
         }

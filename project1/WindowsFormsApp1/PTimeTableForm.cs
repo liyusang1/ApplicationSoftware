@@ -124,7 +124,7 @@ namespace WindowsFormsApp1
                 dgvTime.DataSource = time; 
             }
        
-        string[] menu = { "시간표", "강의자료실", "온라인강의보기" };
+        string[] menu = { "시간표", "강의자료실", "온라인강의보기", "성적관리" };
             cmbMenu.Items.AddRange(menu);
             cmbMenu.SelectedIndex = 0;
         }
@@ -173,6 +173,12 @@ namespace WindowsFormsApp1
                 LectureViewForm lecture = new LectureViewForm(pro);
                 this.Hide();
                 lecture.Show();
+            }
+            else if(cmbMenu.SelectedIndex == 3)
+            {
+                GradeForm grade = new GradeForm(pro);
+                this.Hide();
+                grade.Show();
             }
         }
     }

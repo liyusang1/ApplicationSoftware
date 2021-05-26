@@ -35,7 +35,7 @@ namespace WindowsFormsApp1
             btnDel.Hide();
             std = st;
             txtUser.Text = st.Id + " " + st.Name;
-            string[] menu = { "시간표", "강의자료실", "온라인강의보기" };
+            string[] menu = { "시간표", "강의자료실", "온라인강의보기", "성적관리" };
             cmbMenu.Items.AddRange(menu);
             cmbMenu.SelectedIndex = 2;
 
@@ -86,7 +86,7 @@ namespace WindowsFormsApp1
 
             pro = prof;
             txtUser.Text = prof.Id + " " + prof.Name;
-            string[] menu = { "시간표", "강의자료실", "온라인강의보기" };
+            string[] menu = { "시간표", "강의자료실", "온라인강의보기", "성적관리" };
             cmbMenu.Items.AddRange(menu);
             cmbMenu.SelectedIndex = 2;
 
@@ -186,6 +186,23 @@ namespace WindowsFormsApp1
                     articleView.Show();
                 }
             }
+            else if (cmbMenu.SelectedIndex == 3)
+            {
+                if (pro.Tokens == "null")
+                {
+                    GradeForm grade = new GradeForm(std);
+                    this.Hide();
+                    grade.Show();
+                }
+
+                // 교수일 때
+                else
+                {
+                    GradeForm grade = new GradeForm(std);
+                    this.Hide();
+                    grade.Show();
+                }
+            }
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
@@ -244,6 +261,7 @@ namespace WindowsFormsApp1
         private void btnDel_Click(object sender, EventArgs e)
         {
             //서버에서 삭제를 하기 위해서는 293번째 줄의 classRoomId가 필요로함
+            int classRoomId = lvwLecture.SelectedItems[0].Index;
             int count = lvwLecture.SelectedItems.Count;
             for(int i = count - 1; i >= 0; i--)
             {
