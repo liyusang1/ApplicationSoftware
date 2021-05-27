@@ -335,4 +335,46 @@ namespace WindowsFormsApp1
             set { file_name = value; }
         }
     }
+
+    public class Note
+    {
+        private string title;
+        private string post;
+        private int like;
+        private string[] comment;
+
+        public Note() { }
+
+        public Note(string title, string post, int like, string[] comment)
+        {
+            this.title = title;
+            this.post = post;
+            this.like = like;
+            Array.Copy(comment, this.comment, comment.Length);
+        }
+
+        public string Tittle
+        {
+            get { return title; }
+            set { title = value; }
+        }
+
+        public string Post
+        {
+            get { return post; }
+            set { post = value; }
+        }
+
+        public int Like
+        {
+            get { return like; }
+            set { like = value; }
+        }
+
+        public string[] Comment
+        {
+            get { return comment; }
+            set { Array.Copy(value, comment, value.Length); }
+        }
+    }
 }

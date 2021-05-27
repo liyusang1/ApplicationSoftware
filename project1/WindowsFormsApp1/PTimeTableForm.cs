@@ -180,6 +180,7 @@ namespace WindowsFormsApp1
                 this.Hide();
                 grade.Show();
             }
+        
         }
     }
 }

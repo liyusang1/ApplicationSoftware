@@ -86,7 +86,7 @@ namespace WindowsFormsApp1
 
             pro = prof;
             txtUser.Text = prof.Id + " " + prof.Name;
-            string[] menu = { "시간표", "강의자료실", "온라인강의보기", "성적관리" };
+            string[] menu = { "시간표", "강의자료실", "온라인강의보기", "성적관리", "SNS" };
             cmbMenu.Items.AddRange(menu);
             cmbMenu.SelectedIndex = 2;
 
@@ -202,6 +202,12 @@ namespace WindowsFormsApp1
                     this.Hide();
                     grade.Show();
                 }
+            }
+            else if (cmbMenu.SelectedIndex == 4)
+            {
+                SNSForm sns = new SNSForm(std);
+                this.Hide();
+                sns.Show();
             }
         }
 

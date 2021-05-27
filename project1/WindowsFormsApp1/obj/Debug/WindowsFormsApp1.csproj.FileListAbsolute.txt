@@ -92,3 +92,8 @@ C:\Users\no020\OneDrive\바탕 화면\df\ApplicationSoftware\project1\WindowsFor
 C:\Users\no020\OneDrive\바탕 화면\df\ApplicationSoftware\project1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.GradeForm.resources
 C:\Users\no020\OneDrive\바탕 화면\df\ApplicationSoftware\project1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.GradeUpdateForm.resources
 C:\Users\no020\OneDrive\바탕 화면\df\ApplicationSoftware\project1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CopyComplete
+C:\Users\YoungSeo\Desktop\HomeWork\klasProject\ApplicationSoftware\project1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.GradeForm.resources
+C:\Users\YoungSeo\Desktop\HomeWork\klasProject\ApplicationSoftware\project1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.GradeUpdateForm.resources
+C:\Users\YoungSeo\Desktop\HomeWork\klasProject\ApplicationSoftware\project1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.SNSForm.resources
+C:\Users\YoungSeo\Desktop\HomeWork\klasProject\ApplicationSoftware\project1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.WritingPostForm.resources
+C:\Users\YoungSeo\Desktop\HomeWork\klasProject\ApplicationSoftware\project1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.WritingComForm.resources

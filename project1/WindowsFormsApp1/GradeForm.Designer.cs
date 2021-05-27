@@ -37,12 +37,12 @@ namespace WindowsFormsApp1
             this.btnExit = new System.Windows.Forms.Button();
             this.lblKwang = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.lvwLectureGradestd = new System.Windows.Forms.ListView();
             this.lvwLectureGrade = new System.Windows.Forms.ListView();
             this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.cmbSubject = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.lvwLectureGradestd = new System.Windows.Forms.ListView();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -150,13 +150,23 @@ namespace WindowsFormsApp1
             this.panel3.Size = new System.Drawing.Size(976, 497);
             this.panel3.TabIndex = 15;
             // 
+            // lvwLectureGradestd
+            // 
+            this.lvwLectureGradestd.FullRowSelect = true;
+            this.lvwLectureGradestd.HideSelection = false;
+            this.lvwLectureGradestd.Location = new System.Drawing.Point(19, 40);
+            this.lvwLectureGradestd.Name = "lvwLectureGradestd";
+            this.lvwLectureGradestd.Size = new System.Drawing.Size(936, 446);
+            this.lvwLectureGradestd.TabIndex = 14;
+            this.lvwLectureGradestd.UseCompatibleStateImageBehavior = false;
+            // 
             // lvwLectureGrade
             // 
             this.lvwLectureGrade.FullRowSelect = true;
             this.lvwLectureGrade.HideSelection = false;
-            this.lvwLectureGrade.Location = new System.Drawing.Point(19, 48);
+            this.lvwLectureGrade.Location = new System.Drawing.Point(19, 40);
             this.lvwLectureGrade.Name = "lvwLectureGrade";
-            this.lvwLectureGrade.Size = new System.Drawing.Size(936, 441);
+            this.lvwLectureGrade.Size = new System.Drawing.Size(936, 446);
             this.lvwLectureGrade.TabIndex = 0;
             this.lvwLectureGrade.UseCompatibleStateImageBehavior = false;
             this.lvwLectureGrade.DoubleClick += new System.EventHandler(this.lvwLectureGrade_DoubleClick);
@@ -203,16 +213,6 @@ namespace WindowsFormsApp1
             this.label1.Size = new System.Drawing.Size(41, 12);
             this.label1.TabIndex = 0;
             this.label1.Text = "과목명";
-            // 
-            // lvwLectureGradestd
-            // 
-            this.lvwLectureGradestd.FullRowSelect = true;
-            this.lvwLectureGradestd.HideSelection = false;
-            this.lvwLectureGradestd.Location = new System.Drawing.Point(19, 48);
-            this.lvwLectureGradestd.Name = "lvwLectureGradestd";
-            this.lvwLectureGradestd.Size = new System.Drawing.Size(936, 441);
-            this.lvwLectureGradestd.TabIndex = 14;
-            this.lvwLectureGradestd.UseCompatibleStateImageBehavior = false;
             // 
             // GradeForm
             // 
