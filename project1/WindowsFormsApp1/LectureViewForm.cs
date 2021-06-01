@@ -272,6 +272,7 @@ namespace WindowsFormsApp1
             var client = new RestClient("https://team.liyusang1.site/class-room/"+ classRoomId);
             client.Timeout = -1;
             var request = new RestRequest(Method.DELETE);
+            IRestResponse response = client.Execute(request);
 
             int count = lvwLecture.SelectedItems.Count;
             for(int i = count - 1; i >= 0; i--)

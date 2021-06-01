@@ -229,59 +229,75 @@ namespace WindowsFormsApp1
         private void cmbSubject_SelectedIndexChanged(object sender, EventArgs e)
         {
             lvwLectureGrade.Items.Clear();
-            int StudentCount = 3;
 
-            string[] GetLectureGrade = { "대학물리학", "황소연", "APLUS" }; // 서버에서 받아올 정보
-            string[] LectureGradeInfo = { "황소연", "APLUS" };
+            var client = new RestClient("https://team.liyusang1.site/grade");
+            client.Timeout = -1;
+            var request = new RestRequest(Method.GET);
+            IRestResponse response = client.Execute(request);
 
-            if (cmbSubject.SelectedItem.ToString().Equals(GetLectureGrade[0]))
+
+            var jObject = JObject.Parse(response.Content);
+            int StudentCount = (int)jObject["count"];
+
+
+            for (int i=0; i<StudentCount;i++)
             {
-                for (int i = 0; i < StudentCount; i++)
+                int index =(int)jObject["count"];  // 해당 인덱스를 저장하고 있다가 성적을 입력할때 필요로 합니다.
+
+                //과목이름 //이름 // 성적
+                string[] GetLectureGrade = { jObject["result"][i]["className"].ToString(), jObject["result"][i]["name"].ToString(), jObject["result"][i]["grade"].ToString() }; // 서버에서 받아올 정보
+                string[] LectureGradeInfo = { jObject["result"][i]["name"].ToString(), jObject["result"][i]["grade"].ToString() };
+
+                if (cmbSubject.SelectedItem.ToString().Equals(GetLectureGrade[0]))
                 {
-                    if (LectureGradeInfo[1].Equals("APLUS"))
-                    {
-                        string[] GradeInfo = { LectureGradeInfo[0].ToString(), "A+" };
-                        ListViewItem item = new ListViewItem(GradeInfo);
-                        lvwLectureGrade.Items.Add(item);
-                    }
-                    else if (LectureGradeInfo[1].Equals("AZERO"))
-                    {
-                        string[] GradeInfo = { LectureGradeInfo[0].ToString(), "A" };
-                        ListViewItem item = new ListViewItem(GradeInfo);
-                        lvwLectureGrade.Items.Add(item);
-                    }
-                    else if (LectureGradeInfo[1].Equals("BPLUS"))
-                    {
-                        string[] GradeInfo = { LectureGradeInfo[0].ToString(), "B+" };
-                        ListViewItem item = new ListViewItem(GradeInfo);
-                        lvwLectureGrade.Items.Add(item);
-                    }
-                    else if (LectureGradeInfo[1].Equals("BZERO"))
-                    {
-                        string[] GradeInfo = { LectureGradeInfo[0].ToString(), "B" };
-                        ListViewItem item = new ListViewItem(GradeInfo);
-                        lvwLectureGrade.Items.Add(item);
-                    }
-                    else if (LectureGradeInfo[1].Equals("CPLUS"))
-                    {
-                        string[] GradeInfo = { LectureGradeInfo[0].ToString(), "C+" };
-                        ListViewItem item = new ListViewItem(GradeInfo);
-                        lvwLectureGrade.Items.Add(item);
-                    }
-                    else if (LectureGradeInfo[1].Equals("CZERO"))
-                    {
-                        string[] GradeInfo = { LectureGradeInfo[0].ToString(), "C" };
-                        ListViewItem item = new ListViewItem(GradeInfo);
-                        lvwLectureGrade.Items.Add(item);
-                    }
-                    else
-                    {
-                        string[] GradeInfo = { LectureGradeInfo[0].ToString(), "F" };
-                        ListViewItem item = new ListViewItem(GradeInfo);
-                        lvwLectureGrade.Items.Add(item);
-                    }
+                
+                        if (LectureGradeInfo[1].Equals("APLUS"))
+                        {
+                            string[] GradeInfo = { LectureGradeInfo[0].ToString(), "A+" };
+                            ListViewItem item = new ListViewItem(GradeInfo);
+                            lvwLectureGrade.Items.Add(item);
+                        }
+                        else if (LectureGradeInfo[1].Equals("AZERO"))
+                        {
+                            string[] GradeInfo = { LectureGradeInfo[0].ToString(), "A" };
+                            ListViewItem item = new ListViewItem(GradeInfo);
+                            lvwLectureGrade.Items.Add(item);
+                        }
+                        else if (LectureGradeInfo[1].Equals("BPLUS"))
+                        {
+                            string[] GradeInfo = { LectureGradeInfo[0].ToString(), "B+" };
+                            ListViewItem item = new ListViewItem(GradeInfo);
+                            lvwLectureGrade.Items.Add(item);
+                        }
+                        else if (LectureGradeInfo[1].Equals("BZERO"))
+                        {
+                            string[] GradeInfo = { LectureGradeInfo[0].ToString(), "B" };
+                            ListViewItem item = new ListViewItem(GradeInfo);
+                            lvwLectureGrade.Items.Add(item);
+                        }
+                        else if (LectureGradeInfo[1].Equals("CPLUS"))
+                        {
+                            string[] GradeInfo = { LectureGradeInfo[0].ToString(), "C+" };
+                            ListViewItem item = new ListViewItem(GradeInfo);
+                            lvwLectureGrade.Items.Add(item);
+                        }
+                        else if (LectureGradeInfo[1].Equals("CZERO"))
+                        {
+                            string[] GradeInfo = { LectureGradeInfo[0].ToString(), "C" };
+                            ListViewItem item = new ListViewItem(GradeInfo);
+                            lvwLectureGrade.Items.Add(item);
+                        }
+                        else
+                        {
+                            string[] GradeInfo = { LectureGradeInfo[0].ToString(), "F" };
+                            ListViewItem item = new ListViewItem(GradeInfo);
+                            lvwLectureGrade.Items.Add(item);
+                        }
+                    
                 }
             }
+
+
         }
 
         private void lvwLectureGrade_DoubleClick(object sender, EventArgs e)
