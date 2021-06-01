@@ -71,13 +71,15 @@ namespace WindowsFormsApp1
             jObject = JObject.Parse(response.Content);
 
             int notificationCount = (int)jObject["count"]; //모든 글의 합
+            byte[] file_bytes = null;
+            string file_name = null;
 
             List<Article> visibleArticles = new List<Article>(notificationCount);
             for (int j = 0; j < notificationCount; j++)
             {
                 int articleID = (int)jObject["result"][j]["contentId"];
                 string subjectname = jObject["result"][j]["className"].ToString(); ;
-                string title = jObject["result"][j]["contentName"].ToString(); 
+                string title = jObject["result"][j]["contentName"].ToString();
                 string author = jObject["result"][j]["ProfessorName"].ToString();
                 string date = jObject["result"][j]["createdAt"].ToString();
                 int views = (int)jObject["result"][j]["viewCount"];
@@ -87,8 +89,14 @@ namespace WindowsFormsApp1
                 bool is_bold = (bool)jObject["result"][j]["isBold"];
                 bool is_italic = (bool)jObject["result"][j]["isItalic"];
                 bool is_underline = (bool)jObject["result"][j]["isUnderline"];
-                byte[] file_bytes = new byte[0];
-                string file_name = null;
+
+                if (jObject["result"][j]["fileName"] != null)
+                {
+                    string file = jObject["result"][j]["file"].ToString();
+                    file_name = jObject["result"][j]["fileName"].ToString();
+                    file_bytes = Convert.FromBase64String(file);
+                }
+
                 Article article = new Article(articleID, subjectname, title, author, date, views, content, font_type, font_size, is_bold, is_italic, is_underline, file_bytes, file_name);
                 visibleArticles.Add(article);
             }
@@ -173,6 +181,9 @@ namespace WindowsFormsApp1
             int notificationCount = (int)jObject["count"]; //모든 글의 합
 
             cmbSubject.SelectedIndex = 0;
+            byte[] file_bytes = null;
+            string file_name = null;
+
             List<Article> visibleArticles = new List<Article>(notificationCount);
             for (int j=0;j< notificationCount; j++)
             {
@@ -188,8 +199,14 @@ namespace WindowsFormsApp1
                 bool is_bold = (bool)jObject["result"][j]["isBold"];
                 bool is_italic = (bool)jObject["result"][j]["isItalic"];
                 bool is_underline = (bool)jObject["result"][j]["isUnderline"];
-                byte[] file_bytes = new byte[0];
-                string file_name = null;
+
+                if (jObject["result"][j]["fileName"] != null)
+                {
+                    string file = jObject["result"][j]["file"].ToString();
+                    file_name = jObject["result"][j]["fileName"].ToString();
+                    file_bytes = Convert.FromBase64String(file);
+                }
+
                 Article article = new Article(articleID, subjectname, title, author, date, views, content, font_type, font_size, is_bold, is_italic, is_underline, file_bytes, file_name);
                 visibleArticles.Add(article);
             }

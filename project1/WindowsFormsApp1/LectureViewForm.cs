@@ -268,6 +268,11 @@ namespace WindowsFormsApp1
         {
             //서버에서 삭제를 하기 위해서는 293번째 줄의 classRoomId가 필요로함
             int classRoomId = lvwLecture.SelectedItems[0].Index;
+
+            var client = new RestClient("https://team.liyusang1.site/class-room/"+ classRoomId);
+            client.Timeout = -1;
+            var request = new RestRequest(Method.DELETE);
+
             int count = lvwLecture.SelectedItems.Count;
             for(int i = count - 1; i >= 0; i--)
             {

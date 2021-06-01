@@ -51,6 +51,8 @@ namespace WindowsFormsApp1
             titleTB.Text += selectedArticle.Title;
 
             articleTB.Text = selectedArticle.Content;
+            //이름 추가
+            txtFileName.Text = selectedArticle.File_name;
 
             Font articlefont = new Font(article.Font_type, article.Font_Size);
             articleTB.Font = articlefont;
@@ -88,6 +90,8 @@ namespace WindowsFormsApp1
             titleTB.Text += selectedArticle.Title;
 
             articleTB.Text = selectedArticle.Content;
+            //이름 추가
+            txtFileName.Text = selectedArticle.File_name;
             Font articlefont = new Font(article.Font_type, article.Font_Size);
             articleTB.Font = articlefont;
 
