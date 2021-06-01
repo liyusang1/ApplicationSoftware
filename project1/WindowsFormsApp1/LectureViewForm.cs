@@ -198,7 +198,7 @@ namespace WindowsFormsApp1
                 // 교수일 때
                 else
                 {
-                    GradeForm grade = new GradeForm(std);
+                    GradeForm grade = new GradeForm(pro);
                     this.Hide();
                     grade.Show();
                 }

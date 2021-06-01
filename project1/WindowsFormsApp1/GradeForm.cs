@@ -36,50 +36,68 @@ namespace WindowsFormsApp1
             lvwLectureGradestd.Columns.Add("학점", 110);
             lvwLectureGradestd.Columns.Add("성적", 110);
 
-            int LectureCount = 3;
+            var client = new RestClient("https://team.liyusang1.site/personal-grade");
+            client.Timeout = -1;
+            var request = new RestRequest(Method.GET);
+            request.AddHeader("x-access-token", st.Tokens);
+            IRestResponse response = client.Execute(request);
+            var jObject = JObject.Parse(response.Content);
+
+            int LectureCount = (int)jObject["count"];
+
+
             for (int i = 0; i < LectureCount; i++)
             {
-                string[] LectureGradeInfo = { "H030-3-0969-02", "알고리즘", "소프트웨어학부", "전선", "3", st.Scores[i].Item2.ToString() }; // 서버에서 받아올 정보
+                //학정번호  과목이름  개설학과  전선  
+                string[] LectureGradeInfo = { jObject["result"][i]["infoNumber"].ToString(), jObject["result"][i]["className"].ToString(),
+                    jObject["result"][i]["department"].ToString(),  jObject["result"][i]["category"].ToString(), "3",  jObject["result"][i]["grade"].ToString() }; // 서버에서 받아올 정보
 
                 if (LectureGradeInfo[5].Equals("APLUS"))
                 {
-                    string[] GradeInfo = { "H030-3-0969-02", "알고리즘", "소프트웨어학부", "전선", "3", "A+" };
+                    string[] GradeInfo = { jObject["result"][i]["infoNumber"].ToString(), jObject["result"][i]["className"].ToString(),
+                    jObject["result"][i]["department"].ToString(),  jObject["result"][i]["category"].ToString(), "3", "A+" };
                     ListViewItem item = new ListViewItem(GradeInfo);
                     lvwLectureGradestd.Items.Add(item);
                 }
                 else if(LectureGradeInfo[5].Equals("AZERO"))
                 {
-                    string[] GradeInfo = { "H030-3-0969-02", "알고리즘", "소프트웨어학부", "전선", "3", "A" };
+                    string[] GradeInfo = { jObject["result"][i]["infoNumber"].ToString(), jObject["result"][i]["className"].ToString(),
+                    jObject["result"][i]["department"].ToString(),  jObject["result"][i]["category"].ToString(), "3", "A" };
                     ListViewItem item = new ListViewItem(GradeInfo);
                     lvwLectureGradestd.Items.Add(item);
                 }
                 else if (LectureGradeInfo[5].Equals("BPLUS"))
                 {
-                    string[] GradeInfo = { "H030-3-0969-02", "알고리즘", "소프트웨어학부", "전선", "3", "B+" };
+                    string[] GradeInfo = { jObject["result"][i]["infoNumber"].ToString(), jObject["result"][i]["className"].ToString(),
+                    jObject["result"][i]["department"].ToString(),  jObject["result"][i]["category"].ToString(), "3", "B+" };
                     ListViewItem item = new ListViewItem(GradeInfo);
                     lvwLectureGradestd.Items.Add(item);
                 }
                 else if (LectureGradeInfo[5].Equals("BZERO"))
                 {
-                    string[] GradeInfo = { "H030-3-0969-02", "알고리즘", "소프트웨어학부", "전선", "3", "B" };
+                    string[] GradeInfo = { jObject["result"][i]["infoNumber"].ToString(), jObject["result"][i]["className"].ToString(),
+                    jObject["result"][i]["department"].ToString(),  jObject["result"][i]["category"].ToString(), "3", "B" };
                     ListViewItem item = new ListViewItem(GradeInfo);
                     lvwLectureGradestd.Items.Add(item);
                 }
                 else if (LectureGradeInfo[5].Equals("CPLUS"))
                 {
-                    string[] GradeInfo = { "H030-3-0969-02", "알고리즘", "소프트웨어학부", "전선", "3", "C+" };
+                    string[] GradeInfo = { jObject["result"][i]["infoNumber"].ToString(), jObject["result"][i]["className"].ToString(),
+                    jObject["result"][i]["department"].ToString(),  jObject["result"][i]["category"].ToString(), "3", "C+" };
                     ListViewItem item = new ListViewItem(GradeInfo);
                     lvwLectureGradestd.Items.Add(item);
                 }
                 else if (LectureGradeInfo[5].Equals("CZERO"))
                 {
-                    string[] GradeInfo = { "H030-3-0969-02", "알고리즘", "소프트웨어학부", "전선", "3", "C" };
+                    string[] GradeInfo = { jObject["result"][i]["infoNumber"].ToString(), jObject["result"][i]["className"].ToString(),
+                    jObject["result"][i]["department"].ToString(),  jObject["result"][i]["category"].ToString(), "3", "C" };
                     ListViewItem item = new ListViewItem(GradeInfo);
                     lvwLectureGradestd.Items.Add(item);
                 }
                 else
                 {
-                    string[] GradeInfo = { "H030-3-0969-02", "알고리즘", "소프트웨어학부", "전선", "3", "F" };
+                    string[] GradeInfo = { jObject["result"][i]["infoNumber"].ToString(), jObject["result"][i]["className"].ToString(),
+                    jObject["result"][i]["department"].ToString(),  jObject["result"][i]["category"].ToString(), "3", "F" };
                     ListViewItem item = new ListViewItem(GradeInfo);
                     lvwLectureGradestd.Items.Add(item);
                 }
@@ -209,6 +227,8 @@ namespace WindowsFormsApp1
         public void updateStudentGrade(string grade)
         {
             string[] UpdateGrade = { cmbSubject.SelectedItem.ToString(), grade }; // 서버에 올릴 정보
+
+            //서버에 넘겨야할때필요한 정보는 265번째줄에서 준 인덱스번호와 변경할 성적 정보 두개 입니다.
 
             if (grade.Equals("APLUS"))
                 lvwLectureGrade.SelectedItems[0].SubItems[1].Text = "A+";
