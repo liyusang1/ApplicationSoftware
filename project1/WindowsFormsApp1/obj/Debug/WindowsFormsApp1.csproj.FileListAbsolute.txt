@@ -97,3 +97,30 @@ C:\Users\YoungSeo\Desktop\HomeWork\klasProject\ApplicationSoftware\project1\Wind
 C:\Users\YoungSeo\Desktop\HomeWork\klasProject\ApplicationSoftware\project1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.SNSForm.resources
 C:\Users\YoungSeo\Desktop\HomeWork\klasProject\ApplicationSoftware\project1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.WritingPostForm.resources
 C:\Users\YoungSeo\Desktop\HomeWork\klasProject\ApplicationSoftware\project1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.WritingComForm.resources
+C:\Users\no020\OneDrive\바탕 화면\응소실프로젝트\ApplicationSoftware\project1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+C:\Users\no020\OneDrive\바탕 화면\응소실프로젝트\ApplicationSoftware\project1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+C:\Users\no020\OneDrive\바탕 화면\응소실프로젝트\ApplicationSoftware\project1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+C:\Users\no020\OneDrive\바탕 화면\응소실프로젝트\ApplicationSoftware\project1\WindowsFormsApp1\bin\Debug\Newtonsoft.Json.dll
+C:\Users\no020\OneDrive\바탕 화면\응소실프로젝트\ApplicationSoftware\project1\WindowsFormsApp1\bin\Debug\RestSharp.dll
+C:\Users\no020\OneDrive\바탕 화면\응소실프로젝트\ApplicationSoftware\project1\WindowsFormsApp1\bin\Debug\Newtonsoft.Json.xml
+C:\Users\no020\OneDrive\바탕 화면\응소실프로젝트\ApplicationSoftware\project1\WindowsFormsApp1\bin\Debug\RestSharp.xml
+C:\Users\no020\OneDrive\바탕 화면\응소실프로젝트\ApplicationSoftware\project1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csprojAssemblyReference.cache
+C:\Users\no020\OneDrive\바탕 화면\응소실프로젝트\ApplicationSoftware\project1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.ArticleViewDisplay.resources
+C:\Users\no020\OneDrive\바탕 화면\응소실프로젝트\ApplicationSoftware\project1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.ArticleViewMain.resources
+C:\Users\no020\OneDrive\바탕 화면\응소실프로젝트\ApplicationSoftware\project1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.loginForm.resources
+C:\Users\no020\OneDrive\바탕 화면\응소실프로젝트\ApplicationSoftware\project1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.TimeTableForm.resources
+C:\Users\no020\OneDrive\바탕 화면\응소실프로젝트\ApplicationSoftware\project1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.GradeForm.resources
+C:\Users\no020\OneDrive\바탕 화면\응소실프로젝트\ApplicationSoftware\project1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.GradeUpdateForm.resources
+C:\Users\no020\OneDrive\바탕 화면\응소실프로젝트\ApplicationSoftware\project1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.LectureViewForm.resources
+C:\Users\no020\OneDrive\바탕 화면\응소실프로젝트\ApplicationSoftware\project1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+C:\Users\no020\OneDrive\바탕 화면\응소실프로젝트\ApplicationSoftware\project1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.PTimeTableForm.resources
+C:\Users\no020\OneDrive\바탕 화면\응소실프로젝트\ApplicationSoftware\project1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.SignUpForm.resources
+C:\Users\no020\OneDrive\바탕 화면\응소실프로젝트\ApplicationSoftware\project1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.SNSForm.resources
+C:\Users\no020\OneDrive\바탕 화면\응소실프로젝트\ApplicationSoftware\project1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.UploadForm.resources
+C:\Users\no020\OneDrive\바탕 화면\응소실프로젝트\ApplicationSoftware\project1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.WritingComForm.resources
+C:\Users\no020\OneDrive\바탕 화면\응소실프로젝트\ApplicationSoftware\project1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.WritingPostForm.resources
+C:\Users\no020\OneDrive\바탕 화면\응소실프로젝트\ApplicationSoftware\project1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.cache
+C:\Users\no020\OneDrive\바탕 화면\응소실프로젝트\ApplicationSoftware\project1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
+C:\Users\no020\OneDrive\바탕 화면\응소실프로젝트\ApplicationSoftware\project1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CopyComplete
+C:\Users\no020\OneDrive\바탕 화면\응소실프로젝트\ApplicationSoftware\project1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+C:\Users\no020\OneDrive\바탕 화면\응소실프로젝트\ApplicationSoftware\project1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb

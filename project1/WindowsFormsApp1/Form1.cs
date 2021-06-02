@@ -117,9 +117,11 @@ namespace WindowsFormsApp1
                 else   //교수라면
                 {
                     // List<Professor> pro_friend = new List<Professor>(new Professor[10]); 매개변수에 친구가 없어서 일단은 그냥 놔둠. 필요하다면 추가바람.
-                    List<Subject> pro_subject = new List<Subject>(new Subject[7]);
+                    List<Subject> pro_subject = new List<Subject>();
+                    List<Lecture> pro_lecture = new List<Lecture>();
+                    List<StudentScore> pro_studentScores = new List<StudentScore>();
 
-                    Professor pro = new Professor(id, password, name, jwtToken, department, pro_subject);
+                    Professor pro = new Professor(id, password, name, jwtToken, department, pro_subject, pro_lecture, pro_studentScores);
 
                     PTimeTableForm PTimeTable = new PTimeTableForm(pro);
                     PTimeTable.Show();

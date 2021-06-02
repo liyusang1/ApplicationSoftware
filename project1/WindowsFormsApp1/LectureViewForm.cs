@@ -35,7 +35,7 @@ namespace WindowsFormsApp1
             btnDel.Hide();
             std = st;
             txtUser.Text = st.Id + " " + st.Name;
-            string[] menu = { "시간표", "강의자료실", "온라인강의보기", "성적관리" };
+            string[] menu = { "시간표", "강의자료실", "온라인강의보기", "성적관리", "SNS" };
             cmbMenu.Items.AddRange(menu);
             cmbMenu.SelectedIndex = 2;
 
@@ -86,7 +86,7 @@ namespace WindowsFormsApp1
 
             pro = prof;
             txtUser.Text = prof.Id + " " + prof.Name;
-            string[] menu = { "시간표", "강의자료실", "온라인강의보기", "성적관리", "SNS" };
+            string[] menu = { "시간표", "강의자료실", "온라인강의보기", "성적관리" };
             cmbMenu.Items.AddRange(menu);
             cmbMenu.SelectedIndex = 2;
 
@@ -267,7 +267,16 @@ namespace WindowsFormsApp1
         private void btnDel_Click(object sender, EventArgs e)
         {
             //서버에서 삭제를 하기 위해서는 293번째 줄의 classRoomId가 필요로함
-            int classRoomId = lvwLecture.SelectedItems[0].Index;
+            int classRoomId = 0;
+
+            for(int i = 0; i < pro.Lectures.Count; i++)
+            {
+                if ((cmbSubject.SelectedItem.ToString().Equals(pro.Lectures[i].SubjectName)) 
+                    &&(pro.Lectures[i].Context.Equals(lvwLecture.SelectedItems[0].SubItems[3].Text)))
+                {
+                    classRoomId = pro.Lectures[i].LectureID;
+                }
+            }
 
             var client = new RestClient("https://team.liyusang1.site/class-room/"+ classRoomId);
             client.Timeout = -1;
@@ -322,7 +331,7 @@ namespace WindowsFormsApp1
 
                     int classRoomId = (int)jObject["result"][i]["classRoomId"]; //나중에강의 삭제 수정등에 필요합니다.
                     //삭제를 할때 그 강의의id를 서버로 보내야지 서버에서 그것에 해당하는 강의를 삭제할 수 있음
-
+                    
                     string[] GetLecture = { className, week, chapter, classDistinct, classContext, classTime, classUrl}; // 서버에서 받아올 정보
                     string[] lectureInfo = { week, chapter, classDistinct, classContext, classTime, classUrl};
 
@@ -360,18 +369,19 @@ namespace WindowsFormsApp1
                     int classRoomId = (int)jObject["result"][i]["classRoomId"]; //나중에강의 삭제 수정등에 필요합니다.
                     //삭제를 할때 그 강의의id를 서버로 보내야지 서버에서 그것에 해당하는 강의를 삭제할 수 있음
 
+                    Lecture lecture = new Lecture(classRoomId, className, week, chapter, classDistinct, classContext, classTime, classUrl);
+
                     string[] GetLecture = { className, week, chapter, classDistinct, classContext, classTime, classUrl }; // 서버에서 받아올 정보
                     string[] lectureInfo = { week, chapter, classDistinct, classContext, classTime, classUrl };
 
                     if (cmbSubject.SelectedItem.ToString().Equals(GetLecture[0]))
                     {
+                        pro.Lectures.Add(lecture);
                         ListViewItem item = new ListViewItem(lectureInfo);
                         lvwLecture.Items.Add(item);
                     }
                 }
             }
-
-
         }
     }
 }

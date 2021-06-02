@@ -23,7 +23,7 @@ namespace WindowsFormsApp1
             lvwLectureGrade.Hide();
             std = st;
             txtUser.Text = st.Id + " " + st.Name;
-            string[] menu = { "시간표", "강의자료실", "온라인강의보기", "성적관리"};
+            string[] menu = { "시간표", "강의자료실", "온라인강의보기", "성적관리", "SNS" };
             cmbMenu.Items.AddRange(menu);
             cmbMenu.SelectedIndex = 3;
             
@@ -111,7 +111,7 @@ namespace WindowsFormsApp1
             pro = prof;
             lvwLectureGradestd.Hide();
             txtUser.Text = prof.Id + " " + prof.Name;
-            string[] menu = { "시간표", "강의자료실", "온라인강의보기", "성적관리", "SNS" };
+            string[] menu = { "시간표", "강의자료실", "온라인강의보기", "성적관리"};
             cmbMenu.Items.AddRange(menu);
             cmbMenu.SelectedIndex = 3;
 
@@ -226,8 +226,18 @@ namespace WindowsFormsApp1
 
         public void updateStudentGrade(string grade)
         {
-            string[] UpdateGrade = { cmbSubject.SelectedItem.ToString(), grade }; // 서버에 올릴 정보
+            int Id = 0;
 
+            for (int i = 0; i < pro.StudentScores.Count; i++)
+            {
+                if ((cmbSubject.SelectedItem.ToString().Equals(pro.StudentScores[i].ClassName))
+                    && (pro.StudentScores[i].StudentName.Equals(lvwLectureGrade.SelectedItems[0].SubItems[0].Text)))
+                {
+                    Id = pro.StudentScores[i].ScoreID;
+                }
+            }
+
+            string[] UpdateGrade = { Id.ToString(), grade }; // 서버에 올릴 정보
             //서버에 넘겨야할때필요한 정보는 265번째줄에서 준 인덱스번호와 변경할 성적 정보 두개 입니다.
 
             if (grade.Equals("APLUS"))
@@ -264,6 +274,8 @@ namespace WindowsFormsApp1
             {
                 int index =(int)jObject["count"];  // 해당 인덱스를 저장하고 있다가 성적을 입력할때 필요로 합니다.
 
+                StudentScore studScore = new StudentScore(index, jObject["result"][i]["className"].ToString(), jObject["result"][i]["name"].ToString(), jObject["result"][i]["grade"].ToString());
+                pro.StudentScores.Add(studScore);
                 //과목이름 //이름 // 성적
                 string[] GetLectureGrade = { jObject["result"][i]["className"].ToString(), jObject["result"][i]["name"].ToString(), jObject["result"][i]["grade"].ToString() }; // 서버에서 받아올 정보
                 string[] LectureGradeInfo = { jObject["result"][i]["name"].ToString(), jObject["result"][i]["grade"].ToString() };
@@ -312,12 +324,9 @@ namespace WindowsFormsApp1
                             string[] GradeInfo = { LectureGradeInfo[0].ToString(), "F" };
                             ListViewItem item = new ListViewItem(GradeInfo);
                             lvwLectureGrade.Items.Add(item);
-                        }
-                    
+                        }                   
                 }
             }
-
-
         }
 
         private void lvwLectureGrade_DoubleClick(object sender, EventArgs e)

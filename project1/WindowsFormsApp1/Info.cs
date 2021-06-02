@@ -105,7 +105,7 @@ namespace WindowsFormsApp1
         {
             get { return visibleArticles; }
             set { visibleArticles = value; }
-        }
+        } 
 
     }
 
@@ -113,6 +113,8 @@ namespace WindowsFormsApp1
     {
         private List<Subject> subjects; // 가르치는 과목 목록
                                         // 과목별 학생목록은 subject에 students에 있음
+        private List<Lecture> lectures;
+        private List<StudentScore> studentScores;
 
         public Professor(string tokens)
         {
@@ -120,7 +122,7 @@ namespace WindowsFormsApp1
         }
 
         public Professor(string id, string pw, string name, string tokens, string department,
-             List<Subject> subjects)
+             List<Subject> subjects, List<Lecture> lectures, List<StudentScore> studentScores)
         {
             Id = id;
             Pw = pw;
@@ -128,12 +130,65 @@ namespace WindowsFormsApp1
             Tokens = tokens;
             Department = department;
             this.subjects = subjects;
+            this.lectures = lectures;
+            this.studentScores = studentScores;
         }
 
         public List<Subject> Subjects
         {
             get { return subjects; }
             set { subjects = value; }
+        }
+
+        public List<Lecture> Lectures
+        {
+            get { return lectures; }
+            set { lectures = value; }
+        }
+
+        public List<StudentScore> StudentScores
+        {
+            get { return studentScores; }
+            set { studentScores = value; }
+        }
+    }
+
+    public class StudentScore
+    {
+        int scoreID;
+        string className;
+        string studentName;
+        string score;
+
+        public StudentScore(int scoreID, string className, string studentName, string score)
+        {
+            this.scoreID = scoreID;
+            this.className = className;
+            this.studentName = studentName;
+            this.score = score;
+        }
+
+        public int ScoreID
+        {
+            get { return scoreID; }
+            set { scoreID = value; }
+        }
+
+        public string ClassName
+        {
+            get { return className; }
+            set { className = value; }
+        }
+        
+        public string StudentName
+        {
+            get { return studentName; }
+            set { studentName = value; }
+        }
+        public string StuScore
+        {
+            get { return score; }
+            set { score = value; }
         }
     }
 
@@ -148,9 +203,15 @@ namespace WindowsFormsApp1
         private string classroom; // 교실 이름
         private List<Student> students; // 수강하는 학생 목록
         private string department; // 개설된 학과 이름
+        private List<Lecture> lectures; // 강의 목록
+
+        public Subject(string name)
+        {
+            this.name = name;
+        }
 
         public Subject(string name, int number, short credits, List<(Day, short)> times, string professor_name,
-            string classroom, List<Student> students, string department)
+            string classroom, List<Student> students, string department, List<Lecture> lectures)
         {
             this.name = name;
             this.number = number;
@@ -160,6 +221,7 @@ namespace WindowsFormsApp1
             this.classroom = classroom;
             this.students = students;
             this.department = department;
+            this.lectures = lectures;
         }
 
         public string Name
@@ -208,6 +270,84 @@ namespace WindowsFormsApp1
         {
             get { return department; }
             set { department = value; }
+        }
+
+        public List<Lecture> Lectures
+        {
+            get { return lectures; }
+            set { lectures = value; }
+        }
+    }
+
+    public class Lecture
+    {
+        private int lectureID; // 강의 구분용 ID
+        private string subjectName; // 과목명
+        private string week; // 주차
+        private string chapter; // 학습단원
+        private string distinct; // 구분
+        private string context; // 학습목차
+        private string time; // 인정시간
+        private string classUrl; // URL
+
+        public Lecture(int lectureID, string subjectName, string week, string chapter, string distinct, string context, string time, string classUrl)
+        {
+            this.lectureID = lectureID;
+            this.subjectName = subjectName;
+            this.week = week;
+            this.chapter = chapter;
+            this.distinct = distinct;
+            this.context = context;
+            this.time = time;
+            this.classUrl = classUrl;
+        }
+
+        public int LectureID
+        {
+            get { return lectureID; }
+            set { lectureID = value; }
+        }
+
+        public string SubjectName
+        {
+            get { return subjectName; }
+            set { subjectName = value; }
+        }
+
+        public string Week
+        {
+            get { return week; }
+            set { week = value; }
+        }
+
+        public string Chapter
+        {
+            get { return chapter; }
+            set { chapter = value; }
+        }
+
+        public string Distinct
+        {
+            get { return distinct; }
+            set { distinct = value; }
+        }
+
+        public string Context
+        {
+            get { return context; }
+            set { context = value; }
+        }
+
+        public string Time
+        {
+            get { return time; }
+            set { time = value; }
+        }
+
+        public string ClassURL
+        {
+            get { return classUrl; }
+            set { classUrl = value; }
         }
     }
 

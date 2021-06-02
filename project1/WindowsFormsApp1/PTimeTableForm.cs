@@ -36,14 +36,13 @@ namespace WindowsFormsApp1
             txtUser.Text = pr.Id + " " + pr.Name;
             department.Text = pr.Department;
 
-            pro = new Professor(pr.Id, pr.Pw, pr.Name, pr.Tokens, pr.Department,pr.Subjects);
+            pro = new Professor(pr.Id, pr.Pw, pr.Name, pr.Tokens, pr.Department, pr.Subjects, pr.Lectures, pr.StudentScores);
 
             var client = new RestClient("https://team.liyusang1.site/schedule");
             client.Timeout = -1;
             var request = new RestRequest(Method.GET);
             request.AddHeader("x-access-token", pr.Tokens);
             IRestResponse response = client.Execute(request);
-
 
             var jObject = JObject.Parse(response.Content);
             int resultCode = (int)jObject["code"];
