@@ -254,6 +254,18 @@ namespace WindowsFormsApp1
                 lvwLectureGrade.SelectedItems[0].SubItems[1].Text = "C";
             else
                 lvwLectureGrade.SelectedItems[0].SubItems[1].Text = "F";
+
+            var client = new RestClient("https://team.liyusang1.site/personal-grade/"+Id);
+            client.Timeout = -1;
+            var request = new RestRequest(Method.PATCH);
+            request.AddHeader("Content-Type", "application/json");
+            //서버로 값을 보냄
+            request.AddJsonBody(
+                       new
+                       {
+                           grade = grade
+                       });
+            IRestResponse response = client.Execute(request);;
         }
 
         private void cmbSubject_SelectedIndexChanged(object sender, EventArgs e)
@@ -272,7 +284,7 @@ namespace WindowsFormsApp1
 
             for (int i=0; i<StudentCount;i++)
             {
-                int index =(int)jObject["count"];  // 해당 인덱스를 저장하고 있다가 성적을 입력할때 필요로 합니다.
+                int index =(int)jObject["result"][i]["idx"];  // 해당 인덱스를 저장하고 있다가 성적을 입력할때 필요로 합니다.
 
                 StudentScore studScore = new StudentScore(index, jObject["result"][i]["className"].ToString(), jObject["result"][i]["name"].ToString(), jObject["result"][i]["grade"].ToString());
                 pro.StudentScores.Add(studScore);

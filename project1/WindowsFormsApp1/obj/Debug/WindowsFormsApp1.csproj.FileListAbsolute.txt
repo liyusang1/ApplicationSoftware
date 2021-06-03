@@ -124,3 +124,10 @@ C:\Users\no020\OneDrive\바탕 화면\응소실프로젝트\ApplicationSoftware\
 C:\Users\no020\OneDrive\바탕 화면\응소실프로젝트\ApplicationSoftware\project1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CopyComplete
 C:\Users\no020\OneDrive\바탕 화면\응소실프로젝트\ApplicationSoftware\project1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 C:\Users\no020\OneDrive\바탕 화면\응소실프로젝트\ApplicationSoftware\project1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+C:\Users\user\Desktop\ApplicationSoftware\project1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.GradeForm.resources
+C:\Users\user\Desktop\ApplicationSoftware\project1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.GradeUpdateForm.resources
+C:\Users\user\Desktop\ApplicationSoftware\project1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.PTimeTableForm.resources
+C:\Users\user\Desktop\ApplicationSoftware\project1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.SNSForm.resources
+C:\Users\user\Desktop\ApplicationSoftware\project1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.UploadForm.resources
+C:\Users\user\Desktop\ApplicationSoftware\project1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.WritingComForm.resources
+C:\Users\user\Desktop\ApplicationSoftware\project1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.WritingPostForm.resources
