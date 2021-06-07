@@ -72,9 +72,11 @@ namespace WindowsFormsApp1
                 List<(Subject, Score)> usr_score = new List<(Subject, Score)>(new (Subject, Score)[7]);
 
                 Student stu = new Student(id, password, name, "", major, usr_friend, usr_subject, usr_score);
-                TimeTableForm timetable = new TimeTableForm(stu);
+                loginForm loginform = new loginForm();
+                //TimeTableForm timetable = new TimeTableForm(stu);
                 this.Close();
-                timetable.Show();
+                //timetable.Show();
+                loginform.Show();
             }
             //이미 같은 학번으로 가입이 되어 있는 경우
             else if (resultCode == 302)

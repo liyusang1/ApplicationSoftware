@@ -178,12 +178,6 @@ namespace WindowsFormsApp1
                 this.Hide();
                 grade.Show();
             }
-            else if(cmbMenu.SelectedIndex == 4)
-            {
-                SNSForm sns = new SNSForm(std);
-                this.Hide();
-                sns.Show();
-            }
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)

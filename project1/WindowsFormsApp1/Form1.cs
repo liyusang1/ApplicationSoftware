@@ -29,6 +29,9 @@ using Newtonsoft.Json.Linq;
 //test 교수 아이디
 //id : 0001 password:test123 (김코딩)
 
+//test 학생1
+//id : 2018 pw : 1234(황소연)
+
 namespace WindowsFormsApp1
 {
     public partial class loginForm : Form
