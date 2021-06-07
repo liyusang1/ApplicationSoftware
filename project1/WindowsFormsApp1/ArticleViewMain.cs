@@ -23,7 +23,7 @@ namespace WindowsFormsApp1
             std = st;
             department.Text = st.Department;
             txtUser.Text = st.Id + " " + st.Name;
-            string[] menu = { "시간표", "강의자료실", "온라인강의보기", "성적관리" , "SNS" };
+            string[] menu = { "시간표", "강의자료실", "온라인강의보기", "성적관리" };
             cmbMenu.Items.AddRange(menu);
             cmbMenu.SelectedIndex = 1;
 
